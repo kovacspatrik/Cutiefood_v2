@@ -1,0 +1,23 @@
+@import "src/variables.scss";
+
+.header-container {
+  background-color: $cutiefood-orange;
+  height: $header-height;
+
+  .header-logo {
+    max-height: 45px;
+    cursor: pointer;
+  }
+
+  .toggle-menu-icon {
+    color: white;
+  }
+
+  .navbar-toggler {
+    border-color: white;
+  }
+
+  .nav-link {
+    color: white;
+  }
+}

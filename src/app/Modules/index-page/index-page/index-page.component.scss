@@ -1,0 +1,41 @@
+@import "src/variables.scss";
+
+.index-page {
+  min-height: $app-content-height;
+  background: $cutiefood-background;
+
+  .index-page-search {
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid $cutiefood-orange;
+    padding: 0 10px 0 10px;
+    &::placeholder {
+      font-size: 20px;
+    }
+  }
+
+  .filter-button {
+    cursor: pointer;
+  }
+
+  .index-page-button {
+    background-color: $cutiefood-orange;
+    color: white;
+    outline: none;
+    border: 1px solid $cutiefood-orange;
+
+    &.upload-recipe-button {
+      height: 40px;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
+    &.search-button {
+      border-radius: 10px;
+      height: 40px;
+      width: 40px;
+    }
+  }
+}

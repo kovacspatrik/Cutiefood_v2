@@ -1,0 +1,55 @@
+<div class="container-fluid index-page py-3">
+  <div class="row pb-3">
+    <div class="col-md-8 col-sm-12 d-flex align-items-center">
+      <input class="index-page-search w-100" placeholder="Keresés" />
+
+      <div class="mx-2">
+        <ng-select
+          [items]="ingredientList"
+          bindLabel="name"
+          bindValue="id"
+          name="ingredient-select"
+          [addTag]="true"
+          [multiple]="true"
+          placeholder="Összetevők"
+          [clearable]="true"
+          [hideSelected]="true"
+          [(ngModel)]="selectedIngredients"
+        >
+        </ng-select>
+      </div>
+
+      <button
+        (click)="filterRecipes()"
+        class="
+          index-page-button
+          search-button
+          mx-3
+          d-flex
+          justify-content-center
+          align-items-center
+        "
+        title="Keresés"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div
+      class="
+        col-md col-sm-12
+        d-flex
+        justify-content-center justify-content-md-end
+        my-3 my-md-0
+        align-items-center
+      "
+    >
+      <button
+        (click)="OpenNewRecipeModal()"
+        class="index-page-button upload-recipe-button"
+      >
+        Új recept feltöltése
+      </button>
+    </div>
+  </div>
+  <app-recipe-card-list [recipeList]="recipeList"></app-recipe-card-list>
+</div>

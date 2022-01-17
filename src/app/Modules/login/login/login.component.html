@@ -1,0 +1,17 @@
+<div class="row login-page">
+    <div class="col-6 cutiefood-logo d-flex align-items-center justify-content-center">
+        <img class="login-page-logo" src="assets/logos/logo.png" alt="no picture">
+    </div>
+    <div class="col login-container d-flex align-items-center justify-content-center">
+        <form [formGroup]="loginForm">
+            <div class="form-field">
+                <input type="text" placeholder="email" formControlName="email">
+            </div>
+
+            <div class="form-field">
+                <input type="text" placeholder="password" formControlName="password">
+            </div>
+            <button type="submit" (click)="submitForm()">Belépés</button>
+        </form>
+    </div>
+</div>

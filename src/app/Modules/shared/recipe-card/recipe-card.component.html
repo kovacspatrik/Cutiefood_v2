@@ -1,0 +1,28 @@
+<div class="recipe-card bg-white mb-3">
+    <img class="card-img-top card-image p-3" src="{{selectedRecipe.image}}" alt="Placeholder photo">
+    <div class="card-body pt-0 pb-1">
+        <div class="row">
+            <div class="col-6">
+                <h2>{{selectedRecipe.name}}</h2>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <h3>Nehézség: {{ selectedRecipe.diffLevel }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <h3 class="mb-0">Összetevők: {{ numberOfIngredients }}</h3>
+            </div>
+            <div class="col px-0">
+                <div *ngFor="let i of counter(selectedRecipe.diffLevel)">
+                    <!-- <mat-icon> restaurant</mat-icon> -->
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-end">
+            <app-recipe-details-modal [isFavoritesPage]="isFavoritesPage" [recipe]="selectedRecipe">
+            </app-recipe-details-modal>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,9 @@
+.recipe-card {
+  border-radius: 20px;
+  width: 300px;
+
+  .card-image {
+    object-fit: fill;
+    border-radius: 20px;
+  }
+}

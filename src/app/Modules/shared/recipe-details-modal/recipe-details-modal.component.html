@@ -1,0 +1,38 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header" *ngIf="recipe">
+        <h2 class="modal-title mb-0" id="modal-basic-title">{{ recipe.name }}</h2>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="food-details" *ngIf="recipe">
+            <img class="img-fluid" src="{{ recipe.image }}" alt="{{ recipe.name }} photo" />
+            <div>
+                <h2>Hozzávalók:</h2>
+                <ul *ngFor="let ingredient of recipe.ingredients">
+                    <li>{{ ingredient.name }}</li>
+                </ul>
+                <h2>Elkészítés:</h2>
+                <ul *ngFor="let step of recipe.process">
+                    <li>{{ step }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div *ngIf="isFavoritesPage">
+            <button type="button" class="btn btn-danger" (click)="c('Save click')">
+                Eltávolítás a kedvencek közül
+            </button>
+        </div>
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">
+            Bezárás
+        </button>
+    </div>
+
+</ng-template>
+
+<button class="open-recipe mr-2 mb-2" (click)="open(content)">
+    MEGNYITÁS
+</button>
