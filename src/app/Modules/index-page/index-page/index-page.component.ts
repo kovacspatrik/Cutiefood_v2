@@ -11,14 +11,22 @@ import { RecipeListService } from 'src/app/Services/recipe-list.service';
 })
 export class IndexPageComponent implements OnInit {
   recipeList: Recipe[];
+  recipeListToShow: Recipe[];
   ingredientList: Ingredient[];
   selectedIngredients: number[];
+  searchText = '';
 
   constructor(
     private recipeListService: RecipeListService,
-    private config: NgSelectConfig
   ) {
     this.recipeList = this.recipeListService.recipeList;
+
+    // this.recipeList.forEach((element) => {
+    //   this.recipeList.push(element);
+    // })
+
+    this.recipeListToShow = this.recipeListService.recipeList;
+
     this.ingredientList = this.recipeListService.IngredientsList;
   }
 
@@ -29,6 +37,11 @@ export class IndexPageComponent implements OnInit {
   }
 
   filterRecipes() {
-    console.log(this.selectedIngredients);
+    if (this.searchText != '') {
+      this.recipeListToShow = this.recipeList.filter((element) => element.name.toLowerCase().includes(this.searchText));
+    } else {
+      this.recipeListToShow = this.recipeList;
+    }
+    console.log(this.recipeListToShow);
   }
 }

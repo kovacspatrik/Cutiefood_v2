@@ -9,6 +9,7 @@ import { Recipe } from 'src/app/Models/recipe.model';
 export class RecipeCardListComponent implements OnInit {
   @Input() recipeList: Recipe[];
   @Input() isFavoritesPage = false;
+  @Input() myRecipes = false;
 
   constructor() {}
 

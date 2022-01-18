@@ -1,5 +1,6 @@
 import { Recipe } from 'src/app/Models/recipe.model';
 import { MOCK_INGREDIENTS_FOR_MOCK_RECIPES } from './mock-ingredients';
+import {MOCK_USERS} from "./mock-users";
 
 export const MOCK_RECIPE_LIST: Recipe[] = [
   {
@@ -13,7 +14,7 @@ export const MOCK_RECIPE_LIST: Recipe[] = [
     ],
     image: 'assets/images/pizza.jpg',
     diffLevel: 3,
-    uploader: 'Tencsi',
+    uploader: MOCK_USERS[0],
   },
   {
     id: 2,
@@ -26,7 +27,7 @@ export const MOCK_RECIPE_LIST: Recipe[] = [
     ],
     image: 'assets/images/pizza.jpg',
     diffLevel: 3,
-    uploader: 'Tencsi',
+    uploader: MOCK_USERS[1],
   },
   {
     id: 3,
@@ -39,7 +40,7 @@ export const MOCK_RECIPE_LIST: Recipe[] = [
     ],
     image: 'assets/images/pizza.jpg',
     diffLevel: 3,
-    uploader: 'Tencsi',
+    uploader: MOCK_USERS[0],
   },
   {
     id: 4,
@@ -52,6 +53,6 @@ export const MOCK_RECIPE_LIST: Recipe[] = [
     ],
     image: 'assets/images/pizza.jpg',
     diffLevel: 4,
-    uploader: 'Tencsi',
+    uploader: MOCK_USERS[1],
   },
 ];

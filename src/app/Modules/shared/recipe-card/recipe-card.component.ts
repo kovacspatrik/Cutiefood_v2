@@ -11,6 +11,7 @@ import { RecipeListService } from 'src/app/Services/recipe-list.service';
 export class RecipeCardComponent implements OnInit {
   @Input() id: number;
   @Input() isFavoritesPage: boolean;
+  @Input() myRecipes: boolean;
 
   selectedRecipe!: Recipe;
   numberOfIngredients!: number;

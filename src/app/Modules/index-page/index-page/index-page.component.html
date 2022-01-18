@@ -1,7 +1,7 @@
 <div class="container-fluid index-page py-3">
   <div class="row pb-3">
     <div class="col-md-8 col-sm-12 d-flex align-items-center">
-      <input class="index-page-search w-100" placeholder="Keresés" />
+      <input class="index-page-search w-100" placeholder="Keresés" [(ngModel)]="searchText" />
 
       <div class="mx-2">
         <ng-select
@@ -51,5 +51,5 @@
       </button>
     </div>
   </div>
-  <app-recipe-card-list [recipeList]="recipeList"></app-recipe-card-list>
+  <app-recipe-card-list [recipeList]="recipeListToShow"></app-recipe-card-list>
 </div>

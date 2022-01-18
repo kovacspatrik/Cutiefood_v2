@@ -20,9 +20,12 @@
             </div>
         </div>
         <div class="row d-flex justify-content-end">
+            <div *ngIf="myRecipes">
+              <button class="card-delete-button">Törlés</button>
+              <button class="card-edit-button">Szerkesztés</button>
+            </div>
             <app-recipe-details-modal [isFavoritesPage]="isFavoritesPage" [recipe]="selectedRecipe">
             </app-recipe-details-modal>
         </div>
-
     </div>
 </div>

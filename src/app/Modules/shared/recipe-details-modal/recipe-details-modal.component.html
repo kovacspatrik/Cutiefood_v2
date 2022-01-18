@@ -6,9 +6,16 @@
         </button>
     </div>
     <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <p class="text-secondary">Feltöltő: {{recipe.uploader.name}}</p>
+        </div>
+      </div>
         <div class="food-details" *ngIf="recipe">
-            <img class="img-fluid" src="{{ recipe.image }}" alt="{{ recipe.name }} photo" />
-            <div>
+          <div class="w-100 d-flex justify-content-center my-2">
+            <img class="img-fluid recipe-image" src="{{ recipe.image }}" alt="{{ recipe.name }} photo" />
+          </div>
+            <div class="my-3">
                 <h2>Hozzávalók:</h2>
                 <ul *ngFor="let ingredient of recipe.ingredients">
                     <li>{{ ingredient.name }}</li>
@@ -30,7 +37,6 @@
             Bezárás
         </button>
     </div>
-
 </ng-template>
 
 <button class="open-recipe mr-2 mb-2" (click)="open(content)">

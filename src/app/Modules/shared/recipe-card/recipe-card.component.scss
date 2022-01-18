@@ -1,3 +1,5 @@
+@import "src/variables.scss";
+
 .recipe-card {
   border-radius: 20px;
   width: 300px;
@@ -6,4 +8,23 @@
     object-fit: fill;
     border-radius: 20px;
   }
+
+  .card-delete-button {
+    border: none;
+    color: white;
+    border-radius: 50px;
+    height: 30px;
+    width: 80px;
+    background-color: red;
+  }
+
+  .card-edit-button {
+    border: none;
+    color: white;
+    border-radius: 50px;
+    height: 30px;
+    width: 100px;
+    background-color: $cutiefood-orange;
+  }
+
 }

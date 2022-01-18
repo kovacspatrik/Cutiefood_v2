@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './Modules/shared/shared.module';
 import { IndexPageModule } from './Modules/index-page/index-page.module';
 import { MyFavoriteRecipesModule } from './Modules/my-favorite-recipes/my-favorite-recipes.module';
+import { MyRecipesModule } from "./Modules/my-recipes/my-recipes.module";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     MyFavoriteRecipesModule,
     NgSelectModule,
     FormsModule,
+    MyRecipesModule
   ],
   providers: [],
   bootstrap: [AppComponent],
