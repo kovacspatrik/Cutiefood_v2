@@ -7,16 +7,16 @@
         <div [ngbCollapse]="isToggleClosed" class="collapse navbar-collapse justify-content-stretch">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="'.'" (click)="isToggleClosed = true">Naptár</a>
+                    <a class="nav-link" [routerLink]="['/calendar']" (click)="isToggleClosed = true">Naptár</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/favorites']" (click)="isToggleClosed = true">Kedvenceim</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="'.'" (click)="isToggleClosed = true">Bevásárlólistám</a>
+                    <a class="nav-link" [routerLink]="['/shopping_list']" (click)="isToggleClosed = true">Bevásárlólistám</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="'.'" (click)="isToggleClosed = true">Mi van otthon?</a>
+                    <a class="nav-link" [routerLink]="['/whats_home']" (click)="isToggleClosed = true">Mi van otthon?</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/my_recipes']" (click)="isToggleClosed = true">Receptjeim</a>

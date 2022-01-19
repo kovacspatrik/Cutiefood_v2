@@ -43,12 +43,7 @@
         align-items-center
       "
     >
-      <button
-        (click)="OpenNewRecipeModal()"
-        class="index-page-button upload-recipe-button"
-      >
-        Új recept feltöltése
-      </button>
+      <app-upload-new-recipe></app-upload-new-recipe>
     </div>
   </div>
   <app-recipe-card-list [recipeList]="recipeListToShow"></app-recipe-card-list>

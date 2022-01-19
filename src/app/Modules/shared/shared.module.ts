@@ -16,6 +16,7 @@ import { LoginComponent } from '../login/login/login.component';
 import { RecipeCardListComponent } from './recipe-card-list/recipe-card-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { UploadNewRecipeComponent } from './upload-new-recipe/upload-new-recipe.component';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     LoginComponent,
     RecipeCardListComponent,
+    UploadNewRecipeComponent,
   ],
   exports: [
     RecipeCardComponent,
@@ -47,6 +49,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RecipeCardListComponent,
     NgSelectModule,
+    UploadNewRecipeComponent
   ],
 })
 export class SharedModule {}

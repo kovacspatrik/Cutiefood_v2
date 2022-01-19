@@ -1,0 +1,11 @@
+@import "src/variables.scss";
+
+.upload-recipe-button {
+  background-color: $cutiefood-orange;
+  color: white;
+  outline: none;
+  border: 1px solid $cutiefood-orange;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+}
