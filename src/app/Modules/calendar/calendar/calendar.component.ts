@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
+  weekDays = ['H', 'K', 'Sz', 'Cs', 'P', 'Sz', 'V'];
+
   constructor() { }
 
   ngOnInit(): void {

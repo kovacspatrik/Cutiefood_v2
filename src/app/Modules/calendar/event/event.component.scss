@@ -1,0 +1,17 @@
+@import "src/variables.scss";
+
+.event-box {
+  border: none;
+  border-radius: 10px;
+  width: 90%;
+  background-color: $cutiefood-orange;
+
+  .col-12 {
+    padding: 0px;
+  }
+  img {
+    width: 50%;
+    height: 100%;
+    border-radius: 7px;
+  }
+}
