@@ -10,10 +10,12 @@ import {Ingredient} from "../../../Models/ingredient.model";
 })
 export class ShoppingListComponent implements OnInit {
   @ViewChild('shopList') selectionList: MatSelectionList
+  ingredients = MOCK_INGREDIENTS;
 
   shoppingList = MOCK_INGREDIENTS;
 
   selectedOptions: string[];
+  allSelected = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -28,4 +30,22 @@ export class ShoppingListComponent implements OnInit {
     }
   }
 
+  addToCart(item: any) {
+    if (this.shoppingList.includes(item)){
+      alert('Ez a termék már szerepel a listán!');
+    } else {
+      this.shoppingList.push(item);
+    }
+    console.log(item)
+  }
+
+  selectAll(){
+    if(this.allSelected) {
+      this.selectionList.deselectAll();
+      this.allSelected = !this.allSelected;
+    }else {
+      this.selectionList.selectAll();
+      this.allSelected = !this.allSelected;
+    }
+  }
 }

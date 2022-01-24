@@ -57,7 +57,8 @@ import {MatListModule} from "@angular/material/list";
     UploadNewRecipeComponent,
     FormsModule,
     EventComponent,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
 })
 export class SharedModule {}

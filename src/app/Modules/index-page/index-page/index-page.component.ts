@@ -37,10 +37,10 @@ export class IndexPageComponent implements OnInit {
   }
 
   filterRecipes() {
-  if (this.searchText != '') {
-    this.recipeListToShow = this.recipeList.filter((element) => element.name.toLowerCase().includes(this.searchText.toLowerCase()));
-  } else {
-    this.recipeListToShow = this.recipeList;
-  }
+    if (this.searchText != '') {
+      this.recipeListToShow = this.recipeList.filter((element) => element.name.toLowerCase().includes(this.searchText.toLowerCase()));
+    } else {
+      this.recipeListToShow = this.recipeList;
+    }
   }
 }

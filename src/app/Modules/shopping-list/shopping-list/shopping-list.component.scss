@@ -3,4 +3,34 @@
 .shopping-list-page {
   min-height: $app-content-height;
   background-color: $cutiefood-background;
+
+  .delete-button {
+    border: none;
+    color: white;
+    border-radius: 50px;
+    height: 40px;
+    font-size: 18px;
+    padding: 0px 10px 0px 10px;
+    background-color: $cutiefood-orange;
+  }
+
+  .add-cart-icon {
+    border: none;
+    color: white;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+    font-size: 18px;
+    background-color: $cutiefood-orange;
+  }
+
+  .select-all-button {
+    border: none;
+    color: white;
+    border-radius: 20px;
+    height: 40px;
+    font-size: 18px;
+    background-color: $cutiefood-orange;
+    padding: 0px 10px 0px 10px;
+  }
 }

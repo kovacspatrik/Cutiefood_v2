@@ -1,17 +1,26 @@
 <div class="container-fluid shopping-list-page py-3">
   <div class="container">
-    <h1 class="display-1">Bevásárlólistám</h1>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h1>Bevásárlólistám</h1>
+      </div>
+      <div class="col d-flex justify-content-md-end">
+        <button (click)="selectAll()" class="select-all-button">{{ this.allSelected ? 'Kijelölés törlése' : 'Összes kijelölése' }}</button>
+      </div>
+    </div>
     <mat-selection-list #shopList [(ngModel)]="selectedOptions">
       <mat-list-option *ngFor="let item of shoppingList" [value]="item.name">
         {{item.name}}
       </mat-list-option>
     </mat-selection-list>
-    <div class="row">
-      <div class="col-6">
-        új elemek hozzáadása
+    <div class="row my-3">
+      <div class="col-12 col-md-6 d-flex">
+        <ng-select
+        [placeholder]="'Adjon a listához új elemeket!'" [addTag]="true" [items]="ingredients" [bindLabel]="'name'" [multiple]="false" [bindValue]="'id'" (change)="addToCart($event)"></ng-select>
+          <mat-icon class="add-cart-icon mx-3 d-flex justify-content-center align-items-center" (click)="addToCart($event)">add_shopping_cart</mat-icon>
       </div>
-      <div class="col d-flex justify-content-end">
-        <button (click)="deleteSelected()">Kijelöltek törlése</button>
+      <div class="col d-flex justify-content-md-end mt-2 mt-md-0">
+        <button (click)="deleteSelected()" class="delete-button">Kijelöltek törlése</button>
       </div>
     </div>
   </div>
