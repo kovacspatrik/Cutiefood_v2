@@ -3,22 +3,6 @@
     <div class="col-md-8 col-sm-12 d-flex align-items-center">
       <input class="index-page-search w-100" placeholder="Keresés" [(ngModel)]="searchText" />
 
-      <div class="mx-2">
-        <ng-select
-          [items]="ingredientList"
-          bindLabel="name"
-          bindValue="id"
-          name="ingredient-select"
-          [addTag]="true"
-          [multiple]="true"
-          placeholder="Összetevők"
-          [clearable]="true"
-          [hideSelected]="true"
-          [(ngModel)]="selectedIngredients"
-        >
-        </ng-select>
-      </div>
-
       <button
         (click)="filterRecipes()"
         class="

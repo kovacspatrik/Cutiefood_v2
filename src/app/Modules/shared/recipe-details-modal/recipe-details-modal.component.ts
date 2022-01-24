@@ -11,6 +11,8 @@ export class RecipeDetailsModalComponent implements OnInit {
   @Input() recipe: Recipe;
   @Input() isFavoritesPage: boolean;
 
+  @Input() isCalendarPage = false;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';

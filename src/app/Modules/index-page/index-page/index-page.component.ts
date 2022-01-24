@@ -37,14 +37,10 @@ export class IndexPageComponent implements OnInit {
   }
 
   filterRecipes() {
-    if (this.searchText != '') {
-      if (this.selectedIngredients.length > 0) {
-        // TODO: Szűrést rendesen megcsinálni
-      }else {
-        this.recipeListToShow = this.recipeList.filter((element) => element.name.toLowerCase().includes(this.searchText));
-      }
-    } else {
-      this.recipeListToShow = this.recipeList;
-    }
+  if (this.searchText != '') {
+    this.recipeListToShow = this.recipeList.filter((element) => element.name.toLowerCase().includes(this.searchText.toLowerCase()));
+  } else {
+    this.recipeListToShow = this.recipeList;
+  }
   }
 }

@@ -8,9 +8,9 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
   declarations: [
     ShoppingListComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+    ]
 })
 export class ShoppingListModule { }

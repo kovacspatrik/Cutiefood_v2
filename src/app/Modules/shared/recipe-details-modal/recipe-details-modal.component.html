@@ -27,18 +27,26 @@
             </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <div *ngIf="isFavoritesPage">
-            <button type="button" class="btn btn-danger" (click)="c('Save click')">
-                Eltávolítás a kedvencek közül
-            </button>
-        </div>
-        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">
-            Bezárás
-        </button>
+    <div class="modal-footer d-flex justify-content-center justify-content-lg-end">
+      <button type="button" class="btn btn-outline-dark" (click)="c('addCalendar click')">
+        Naptárhoz adás
+      </button>
+      <button *ngIf="!isFavoritesPage" type="button" class="btn btn-outline-dark" (click)="c('addCalendar click')">
+        Kedvencekhez adás
+      </button>
+      <div *ngIf="isFavoritesPage">
+          <button type="button" class="btn btn-danger" (click)="c('Delete click')">
+              Eltávolítás a kedvencek közül
+          </button>
+      </div>
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">
+          Bezárás
+      </button>
     </div>
 </ng-template>
 
-<button class="open-recipe mr-2 mb-2" (click)="open(content)">
+<button *ngIf="!isCalendarPage" class="open-recipe mr-2 mb-2" (click)="open(content)">
     MEGNYITÁS
 </button>
+
+<app-event *ngIf="isCalendarPage" [recipe]="recipe" (click)="open(content)" style="cursor: pointer"></app-event>

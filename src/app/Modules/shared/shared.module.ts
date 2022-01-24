@@ -17,6 +17,9 @@ import { RecipeCardListComponent } from './recipe-card-list/recipe-card-list.com
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { UploadNewRecipeComponent } from './upload-new-recipe/upload-new-recipe.component';
+import { EventComponent } from "../calendar/event/event.component";
+import {MatListModule} from "@angular/material/list";
+
 
 @NgModule({
   imports: [
@@ -31,6 +34,7 @@ import { UploadNewRecipeComponent } from './upload-new-recipe/upload-new-recipe.
     ReactiveFormsModule,
     NgSelectModule,
     FormsModule,
+    MatListModule
   ],
   declarations: [
     RecipeCardComponent,
@@ -40,6 +44,7 @@ import { UploadNewRecipeComponent } from './upload-new-recipe/upload-new-recipe.
     LoginComponent,
     RecipeCardListComponent,
     UploadNewRecipeComponent,
+    EventComponent
   ],
   exports: [
     RecipeCardComponent,
@@ -49,7 +54,10 @@ import { UploadNewRecipeComponent } from './upload-new-recipe/upload-new-recipe.
     LoginComponent,
     RecipeCardListComponent,
     NgSelectModule,
-    UploadNewRecipeComponent
+    UploadNewRecipeComponent,
+    FormsModule,
+    EventComponent,
+    MatListModule
   ],
 })
 export class SharedModule {}
