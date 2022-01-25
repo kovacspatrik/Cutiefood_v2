@@ -18,7 +18,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { UploadNewRecipeComponent } from './upload-new-recipe/upload-new-recipe.component';
 import { EventComponent } from "../calendar/event/event.component";
-import {MatListModule} from "@angular/material/list";
+import { MatListModule } from "@angular/material/list";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -58,7 +59,11 @@ import {MatListModule} from "@angular/material/list";
     FormsModule,
     EventComponent,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
 })
 export class SharedModule {}
