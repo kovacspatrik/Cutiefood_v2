@@ -53,7 +53,7 @@ export class WhatsHomeComponent {
     if(this.selectedIngredients.length > 0) {
       for (let recipe of this.recipes) {
 
-        console.log(recipe.ingredients);
+        console.log(recipe.ingredients.find((res) => res.name === "só"));
       }
     }
 
