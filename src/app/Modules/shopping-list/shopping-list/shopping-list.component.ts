@@ -17,7 +17,6 @@ export class ShoppingListComponent implements OnInit {
   shoppingList: Ingredient[] = [];
 
   selectedOptions: string[];
-
   allSelected = false;
 
   constructor() { }

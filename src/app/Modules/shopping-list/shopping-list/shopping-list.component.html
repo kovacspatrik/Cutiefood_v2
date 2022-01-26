@@ -1,12 +1,15 @@
 <div class="container-fluid shopping-list-page py-3">
   <div class="container">
-    <div class="row">
+    <div *ngIf="shoppingList.length > 0" class="row">
       <div class="col-12 col-md-6">
         <h1>Bevásárlólistám</h1>
       </div>
       <div class="col d-flex justify-content-md-end">
         <button (click)="selectAll()" class="select-all-button">{{ this.allSelected ? 'Kijelölés törlése' : 'Összes kijelölése' }}</button>
       </div>
+    </div>
+    <div *ngIf="!(shoppingList.length > 0)">
+      <h1>A bevásárlólista jelenleg üres!</h1>
     </div>
     <mat-selection-list #shopList [(ngModel)]="selectedOptions">
       <mat-list-option *ngFor="let item of shoppingList" [value]="item.name">
@@ -16,7 +19,7 @@
     <div class="row my-3">
       <div class="col-12 col-md-6 d-flex">
       <mat-form-field appearance="outline">
-        <mat-select #select (valueChange)="addToCart($event)">
+        <mat-select #select (valueChange)="addToCart($event)" [disableOptionCentering]="true">
           <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient.id">{{ ingredient.name }}</mat-option>
         </mat-select>
       </mat-form-field>
