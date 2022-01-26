@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MOCK_INGREDIENTS } from "../../../Services/mock-files/mock-ingredients";
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {MOCK_RECIPE_LIST} from "../../../Services/mock-files/mock-recipes";
+import {Ingredient} from "../../../Models/ingredient.model";
+import {Recipe} from "../../../Models/recipe.model";
 
 @Component({
   selector: 'app-whats-home',
@@ -9,30 +11,56 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 })
 export class WhatsHomeComponent {
   mock_ingredients = MOCK_INGREDIENTS;
-  selectedIngredients= new Array<string>(1);
+  recipes = MOCK_RECIPE_LIST;
 
-  form = this.fb.group({
-    ingredients: this.fb.array([])
-  })
+  selectedIngredients: number[];
+  recipeListToShow: Recipe[] = [];
 
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
-  get ingredients() {
-    return this.form.controls["ingredients"] as FormArray
+  getIngredientById(id: number): Ingredient {
+    let toReturn: Ingredient = {
+      id,
+      name: 'proba'
+    }
+    const test = this.mock_ingredients.find(x => x.id === id)
+    console.log(test);
+    return test
   }
 
-  addRow() {
-    const ingredientControl = this.fb.group({
-      name: '',
-    });
-    this.ingredients.push(ingredientControl);
+  getIngredientsById(ids: number[]): Ingredient[] {
+    let toReturn: Ingredient[] = [];
+    for (let item of ids) {
+      toReturn.push(this.getIngredientById(item));
+    }
+    return toReturn;
   }
 
-  deleteRow(lessonIndex: number) {
-    this.ingredients.removeAt(lessonIndex);
+  hasThatIngredient(recipe: Recipe, ingredient: Ingredient): boolean {
+    return recipe.ingredients.includes(ingredient);
   }
 
-  logValues() {
-    console.log(this.form.get("ingredients").value);
+  hasEveryIngredients(recipe: Recipe, ingredients: Ingredient[]): boolean {
+    for (let ingredient of ingredients) {
+      if (!(this.hasThatIngredient(recipe, ingredient))){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  filterRecipes() {
+    if(this.selectedIngredients.length > 0) {
+      for (let recipe of this.recipes) {
+
+        console.log(recipe.ingredients);
+      }
+    }
+
+    // this.recipeListToShow = this.recipes.filter((recipe) => {
+    //   console.log(recipe.ingredients.find((ingredient) =>
+    //     ingredient === proba
+    //   ));
+    // })
   }
 }

@@ -1,58 +1,29 @@
-<!--<div class="container-fluid whats-home-page py-3">-->
-<!--  <div class="container">-->
-<!--    <div *ngFor="let item of selectedIngredients; let i = index" class="ingredient-input-list">-->
-<!--      <ng-select [items]="mock_ingredients"-->
-<!--                 bindLabel="name"-->
-<!--                 bindValue="id"-->
-<!--                 name="ingredient-select"-->
-<!--                 [addTag]="true"-->
-<!--                 [multiple]="false"-->
-<!--                 placeholder="Válasszon egy összetevőt!"-->
-<!--                 [hideSelected]="true"-->
-<!--                 [(ngModel)]="selectedIngredients[i]"-->
-<!--                 class="my-2 w-25"-->
-<!--                 >-->
-<!--      </ng-select>-->
-<!--    </div>-->
-<!--    <button (click)="addRow()">-->
-<!--      új hozzáadása-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class="container-fluid whats-home-page py-3">
-  <div [formGroup]="form">
-    <ng-container [formArrayName]="'ingredients'">
-      <ng-container *ngFor="let ingredient of ingredients.controls; let i = index">
-        <div [formGroupName]="i">
-<!--          <mat-form-field>-->
-<!--            <input matInput formControlName="name" placeholder="hozzávaló neve">-->
-<!--          </mat-form-field>-->
-
-          <mat-form-field appearance="fill">
-            <mat-label>Válasszon hozzávalót!</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let item of mock_ingredients" [value]="'name'">
-                {{ item.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button mat-mini-fab (click)="deleteRow(i)">
-            <mat-icon class="add-course-btn">delete</mat-icon>
-          </button>
-        </div>
-      </ng-container>
-    </ng-container>
-
-    <button mat-mini-fab (click)="addRow()">
-      <mat-icon class="add-course-btn">add</mat-icon>
-    </button>
-    <br>
-    <button mat-mini-fab (click)="logValues()">
-      Kiír
-    </button>
-
+  <div class="container">
+    <div class="row d-flex justify-content-center justify-content-md-start">
+      <div class="col-9">
+        <ng-select [items]="mock_ingredients" [hideSelected]="true" [multiple]="true" [bindValue]="'id'"
+        [bindLabel]="'name'" [(ngModel)]="selectedIngredients"></ng-select>
+      </div>
+      <div class="col d-flex justify-content-center justify-content-md-start">
+        <button
+          (click)="filterRecipes()"
+          class="
+              search-button
+              mx-3
+              my-2 my-sm-0
+              d-flex
+              justify-content-center
+              align-items-center
+            "
+          title="Keresés"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+     </div>
   </div>
+  <app-recipe-card-list [recipeList]="recipeListToShow"></app-recipe-card-list>
 </div>
 
 

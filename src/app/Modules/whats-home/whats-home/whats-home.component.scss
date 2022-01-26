@@ -3,4 +3,14 @@
 .whats-home-page {
   min-height: $app-content-height;
   background-color: $cutiefood-background;
+
+  .search-button {
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    background-color: $cutiefood-orange;
+    color: white;
+    outline: none;
+    border: 1px solid $cutiefood-orange;
+  }
 }

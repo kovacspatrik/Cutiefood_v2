@@ -15,6 +15,7 @@ export class MyRecipesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.recipeList = this.recipeList.filter((res) => res.uploader.name === 'Tencsi');
   }
 
 }
