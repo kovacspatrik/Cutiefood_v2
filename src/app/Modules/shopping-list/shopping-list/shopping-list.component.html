@@ -15,9 +15,11 @@
     </mat-selection-list>
     <div class="row my-3">
       <div class="col-12 col-md-6 d-flex">
-        <ng-select
-        [placeholder]="'Adjon a listához új elemeket!'" [addTag]="true" [items]="ingredients" [bindLabel]="'name'" [multiple]="false" [bindValue]="'id'" (change)="addToCart($event)"></ng-select>
-          <mat-icon class="add-cart-icon mx-3 d-flex justify-content-center align-items-center" (click)="addToCart($event)">add_shopping_cart</mat-icon>
+      <mat-form-field appearance="outline">
+        <mat-select #select (valueChange)="addToCart($event)">
+          <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient.id">{{ ingredient.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
       </div>
       <div class="col d-flex justify-content-md-end mt-2 mt-md-0">
         <button (click)="deleteSelected()" class="delete-button">Kijelöltek törlése</button>

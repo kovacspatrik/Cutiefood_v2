@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { MOCK_INGREDIENTS } from "../../../Services/mock-files/mock-ingredients";
 import {MatSelectionList} from "@angular/material/list";
 import {Ingredient} from "../../../Models/ingredient.model";
+import {MatSelect} from "@angular/material/select";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,12 +12,14 @@ import {Ingredient} from "../../../Models/ingredient.model";
 })
 export class ShoppingListComponent implements OnInit {
   @ViewChild('shopList') selectionList: MatSelectionList
+  @ViewChild('select') selectDropdown: MatSelect;
   ingredients = MOCK_INGREDIENTS;
-
-  shoppingList = MOCK_INGREDIENTS;
+  shoppingList: Ingredient[] = [];
 
   selectedOptions: string[];
+
   allSelected = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -30,13 +34,14 @@ export class ShoppingListComponent implements OnInit {
     }
   }
 
-  addToCart(item: any) {
-    if (this.shoppingList.includes(item)){
+  addToCart(itemId: any) {
+    const elementToAdd = this.ingredients[itemId]
+    if (this.shoppingList.includes(elementToAdd)){
       alert('Ez a termék már szerepel a listán!');
     } else {
-      this.shoppingList.push(item);
+      this.shoppingList.push(elementToAdd);
+      this.selectDropdown.value = [];
     }
-    console.log(item)
   }
 
   selectAll(){
