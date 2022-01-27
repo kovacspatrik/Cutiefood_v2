@@ -23,6 +23,9 @@
       </div>
      </div>
   </div>
+  <div *ngIf="!(recipeListToShow.length > 0)" class="container my-2">
+    <h1>Nincs megjelenítendő recept!</h1>
+  </div>
   <app-recipe-card-list [recipeList]="recipeListToShow"></app-recipe-card-list>
 </div>
 

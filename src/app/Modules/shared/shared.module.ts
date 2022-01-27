@@ -16,10 +16,11 @@ import { LoginComponent } from '../login/login/login.component';
 import { RecipeCardListComponent } from './recipe-card-list/recipe-card-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-import { UploadNewRecipeComponent } from './upload-new-recipe/upload-new-recipe.component';
 import { EventComponent } from "../calendar/event/event.component";
 import { MatListModule } from "@angular/material/list";
-import {MatSelectModule} from "@angular/material/select";
+import { MatSelectModule } from "@angular/material/select";
+import { UploadEditRecipeModalComponent } from './upload-edit-recipe-modal/upload-edit-recipe-modal.component';
+import { MatSliderModule } from "@angular/material/slider";
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {MatSelectModule} from "@angular/material/select";
     ReactiveFormsModule,
     NgSelectModule,
     FormsModule,
-    MatListModule
+    MatListModule,
+    MatSliderModule
   ],
   declarations: [
     RecipeCardComponent,
@@ -44,8 +46,8 @@ import {MatSelectModule} from "@angular/material/select";
     FooterComponent,
     LoginComponent,
     RecipeCardListComponent,
-    UploadNewRecipeComponent,
-    EventComponent
+    EventComponent,
+    UploadEditRecipeModalComponent
   ],
   exports: [
     RecipeCardComponent,
@@ -55,7 +57,6 @@ import {MatSelectModule} from "@angular/material/select";
     LoginComponent,
     RecipeCardListComponent,
     NgSelectModule,
-    UploadNewRecipeComponent,
     FormsModule,
     EventComponent,
     MatListModule,
@@ -63,7 +64,9 @@ import {MatSelectModule} from "@angular/material/select";
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    UploadEditRecipeModalComponent,
+    MatSliderModule
   ],
 })
 export class SharedModule {}

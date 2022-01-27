@@ -1,0 +1,49 @@
+@import "src/variables.scss";
+
+.upload-recipe-button {
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: $cutiefood-orange;
+  color: white;
+  outline: none;
+  border: 1px solid $cutiefood-orange;
+}
+
+.card-edit-button {
+  border: none;
+  color: white;
+  border-radius: 50px;
+  height: 30px;
+  width: 30px;
+  background-color: $cutiefood-orange;
+}
+
+.modal-save-button {
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  height: 40px;
+  background-color: $cutiefood-orange;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  width: 400px;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb {
+  background-color: $cutiefood-orange;
+}
+
+::ng-deep .mat-accent .mat-slider-ticks-container {
+  background-color: $cutiefood-orange;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb-label {
+  background-color: $cutiefood-orange;
+}
+
+.mat-slider {
+  width: 400px;
+}

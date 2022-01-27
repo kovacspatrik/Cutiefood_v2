@@ -6,7 +6,7 @@ export const MOCK_RECIPE_LIST: Recipe[] = [
   {
     id: 1,
     name: 'Teszt 1',
-    ingredients: MOCK_INGREDIENTS,
+    ingredients: MOCK_INGREDIENTS_FOR_MOCK_RECIPES.filter(elem => elem.name !== "só"),
     process: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a feugiat sapien. Integer elementum vulputate lacinia. Sed leo magna, condimentum a elementum sed, sodales vel elit. Maecenas in consequat orci. Nulla eu odio laoreet, laoreet felis sit amet, blandit diam. Quisque accumsan leo urna, vel vulputate massa vehicula vitae. Pellentesque fermentum non dolor et gravida. Ut porta dapibus metus vel elementum.',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a feugiat sapien. Integer elementum vulputate lacinia. Sed leo magna, condimentum a elementum sed, sodales vel elit. Maecenas in consequat orci. Nulla eu odio laoreet, laoreet felis sit amet, blandit diam. Quisque accumsan leo urna, vel vulputate massa vehicula vitae. Pellentesque fermentum non dolor et gravida. Ut porta dapibus metus vel elementum.',
@@ -19,7 +19,7 @@ export const MOCK_RECIPE_LIST: Recipe[] = [
   {
     id: 2,
     name: 'Teszt 2',
-    ingredients: MOCK_INGREDIENTS,
+    ingredients: MOCK_INGREDIENTS_FOR_MOCK_RECIPES,
     process: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a feugiat sapien. Integer elementum vulputate lacinia. Sed leo magna, condimentum a elementum sed, sodales vel elit. Maecenas in consequat orci. Nulla eu odio laoreet, laoreet felis sit amet, blandit diam. Quisque accumsan leo urna, vel vulputate massa vehicula vitae. Pellentesque fermentum non dolor et gravida. Ut porta dapibus metus vel elementum.',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a feugiat sapien. Integer elementum vulputate lacinia. Sed leo magna, condimentum a elementum sed, sodales vel elit. Maecenas in consequat orci. Nulla eu odio laoreet, laoreet felis sit amet, blandit diam. Quisque accumsan leo urna, vel vulputate massa vehicula vitae. Pellentesque fermentum non dolor et gravida. Ut porta dapibus metus vel elementum.',
@@ -32,7 +32,7 @@ export const MOCK_RECIPE_LIST: Recipe[] = [
   {
     id: 3,
     name: 'Teszt 3',
-    ingredients: MOCK_INGREDIENTS,
+    ingredients: MOCK_INGREDIENTS_FOR_MOCK_RECIPES.filter(elem => elem.name !== "só"),
     process: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a feugiat sapien. Integer elementum vulputate lacinia. Sed leo magna, condimentum a elementum sed, sodales vel elit. Maecenas in consequat orci. Nulla eu odio laoreet, laoreet felis sit amet, blandit diam. Quisque accumsan leo urna, vel vulputate massa vehicula vitae. Pellentesque fermentum non dolor et gravida. Ut porta dapibus metus vel elementum.',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a feugiat sapien. Integer elementum vulputate lacinia. Sed leo magna, condimentum a elementum sed, sodales vel elit. Maecenas in consequat orci. Nulla eu odio laoreet, laoreet felis sit amet, blandit diam. Quisque accumsan leo urna, vel vulputate massa vehicula vitae. Pellentesque fermentum non dolor et gravida. Ut porta dapibus metus vel elementum.',
@@ -45,7 +45,7 @@ export const MOCK_RECIPE_LIST: Recipe[] = [
   {
     id: 4,
     name: 'Teszt 4',
-    ingredients: MOCK_INGREDIENTS,
+    ingredients: MOCK_INGREDIENTS_FOR_MOCK_RECIPES.filter(elem => elem.name !== "só"),
     process: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a feugiat sapien. Integer elementum vulputate lacinia. Sed leo magna, condimentum a elementum sed, sodales vel elit. Maecenas in consequat orci. Nulla eu odio laoreet, laoreet felis sit amet, blandit diam. Quisque accumsan leo urna, vel vulputate massa vehicula vitae. Pellentesque fermentum non dolor et gravida. Ut porta dapibus metus vel elementum.',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a feugiat sapien. Integer elementum vulputate lacinia. Sed leo magna, condimentum a elementum sed, sodales vel elit. Maecenas in consequat orci. Nulla eu odio laoreet, laoreet felis sit amet, blandit diam. Quisque accumsan leo urna, vel vulputate massa vehicula vitae. Pellentesque fermentum non dolor et gravida. Ut porta dapibus metus vel elementum.',

@@ -19,48 +19,28 @@ export class WhatsHomeComponent {
   constructor() {}
 
   getIngredientById(id: number): Ingredient {
-    let toReturn: Ingredient = {
-      id,
-      name: 'proba'
-    }
-    const test = this.mock_ingredients.find(x => x.id === id)
-    console.log(test);
-    return test
+    return this.mock_ingredients.find(x => x.id === id);
   }
 
-  getIngredientsById(ids: number[]): Ingredient[] {
-    let toReturn: Ingredient[] = [];
-    for (let item of ids) {
-      toReturn.push(this.getIngredientById(item));
-    }
-    return toReturn;
-  }
-
-  hasThatIngredient(recipe: Recipe, ingredient: Ingredient): boolean {
-    return recipe.ingredients.includes(ingredient);
-  }
-
-  hasEveryIngredients(recipe: Recipe, ingredients: Ingredient[]): boolean {
-    for (let ingredient of ingredients) {
-      if (!(this.hasThatIngredient(recipe, ingredient))){
-        return false;
-      }
-    }
-    return true;
-  }
-
-  filterRecipes() {
+  filterRecipes(): void {
     if(this.selectedIngredients.length > 0) {
+      this.recipeListToShow = [];
+
       for (let recipe of this.recipes) {
+        let goodRecipe = true;
 
-        console.log(recipe.ingredients.find((res) => res.name === "só"));
+        for (let ingredient of this.selectedIngredients) {
+          if (!(recipe.ingredients.some((res) => JSON.stringify(res) === JSON.stringify(this.getIngredientById(ingredient))))){
+            goodRecipe = false;
+          }
+        }
+
+        if (goodRecipe) {
+          this.recipeListToShow.push(recipe);
+        }
+
       }
-    }
 
-    // this.recipeListToShow = this.recipes.filter((recipe) => {
-    //   console.log(recipe.ingredients.find((ingredient) =>
-    //     ingredient === proba
-    //   ));
-    // })
+    }
   }
 }

@@ -12,7 +12,7 @@
         align-items-center
       "
     >
-      <app-upload-new-recipe></app-upload-new-recipe>
+      <app-upload-edit-recipe-modal [recipe]="recipeList[0]"></app-upload-edit-recipe-modal>
     </div>
   </div>
   <app-recipe-card-list [recipeList]="recipeList" [myRecipes]="true"></app-recipe-card-list>
