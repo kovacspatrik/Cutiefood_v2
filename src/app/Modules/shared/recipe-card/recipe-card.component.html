@@ -21,7 +21,7 @@
         </div>
         <div class="row d-flex justify-content-end">
             <div *ngIf="myRecipes" class="d-flex mx-1">
-              <button class="card-delete-button d-flex justify-content-center align-items-center mx-1"><mat-icon>delete_outline</mat-icon></button>
+              <app-are-you-sure-delete-modal [recipeId]="id"></app-are-you-sure-delete-modal>
               <app-upload-edit-recipe-modal [isEdit]="true" [recipe]="selectedRecipe"></app-upload-edit-recipe-modal>
             </div>
             <app-recipe-details-modal [isFavoritesPage]="isFavoritesPage" [recipe]="selectedRecipe">

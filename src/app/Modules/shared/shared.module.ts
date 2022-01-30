@@ -21,6 +21,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatSelectModule } from "@angular/material/select";
 import { UploadEditRecipeModalComponent } from './upload-edit-recipe-modal/upload-edit-recipe-modal.component';
 import { MatSliderModule } from "@angular/material/slider";
+import { AreYouSureDeleteModalComponent } from './are-you-sure-delete-modal/are-you-sure-delete-modal.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { MatSliderModule } from "@angular/material/slider";
     LoginComponent,
     RecipeCardListComponent,
     EventComponent,
-    UploadEditRecipeModalComponent
+    UploadEditRecipeModalComponent,
+    AreYouSureDeleteModalComponent
   ],
   exports: [
     RecipeCardComponent,

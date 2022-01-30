@@ -1,0 +1,25 @@
+.card-delete-button {
+  border: none;
+  color: white;
+  border-radius: 50px;
+  height: 30px;
+  width: 30px;
+  background-color: red;
+}
+
+.modal-footer {
+  button {
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: transparent;
+    font-size: 15px;
+    height: 30px;
+  }
+
+  .delete-button {
+    color: white;
+    background-color: red;
+    border: 1px solid red;
+  }
+}
