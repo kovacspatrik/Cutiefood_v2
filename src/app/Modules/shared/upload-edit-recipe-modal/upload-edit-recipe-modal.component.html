@@ -13,9 +13,19 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-    <div class="recipe-diff-level d-flex justify-content-center">
-      <h3>Recept nehézségi szintje</h3>
+    <div class="recipe-diff-level my-3 d-flex justify-content-between align-items-center px-0 px-md-5">
+      <mat-label class="mr-2 mr-md-3">Recept nehézségi szintje: </mat-label>
       <mat-slider [max]="3" [min]="1" [step]="1" [thumbLabel]="true" [(ngModel)]="recipe.diffLevel" aria-labelledby="diff-slider"></mat-slider>
+    </div>
+    <div class="recipe-ingredients my-3 d-flex justify-content-between align-items-center px-0 px-md-5">
+      <mat-label class="mr-2 mr-md-3">Összetevők: </mat-label>
+      <ng-select [multiple]="true" [clearable]="false" [items]="allIngredientsList" [bindValue]="'id'" [bindLabel]="'name'" [(ngModel)]="recipe.ingredients"></ng-select>
+    </div>
+    <div class="recipe-process my-3 d-flex justify-content-between align-items-center px-0 px-md-5">
+      <mat-label class="mr-2 mr-md-3">Elkészítés menete: </mat-label>
+      <mat-form-field appearance="outline">
+        <textarea matInput [placeholder]="'Részletezze az elkészítés menetét'" [rows]="10" [(ngModel)]="recipe.process"></textarea>
+      </mat-form-field>
     </div>
 
   </div>

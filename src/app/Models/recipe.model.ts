@@ -5,8 +5,8 @@ export class Recipe {
     id: number;
     name: string;
     uploader: User;
-    ingredients: Ingredient[];
-    process: string[];
+    ingredients: number[];
+    process: string;
     diffLevel: number;
     image?: string;
 }

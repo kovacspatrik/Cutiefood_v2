@@ -17,13 +17,11 @@
           </div>
             <div class="my-3">
                 <h2>Hozzávalók:</h2>
-                <ul *ngFor="let ingredient of recipe.ingredients">
-                    <li>{{ ingredient.name }}</li>
+                <ul *ngFor="let ingredientId of recipe.ingredients">
+                    <li>{{ getIngredientNameById(ingredientId) }}</li>
                 </ul>
                 <h2>Elkészítés:</h2>
-                <ul *ngFor="let step of recipe.process">
-                    <li>{{ step }}</li>
-                </ul>
+                <p>{{recipe.process}}</p>
             </div>
         </div>
     </div>

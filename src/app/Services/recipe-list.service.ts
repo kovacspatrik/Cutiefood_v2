@@ -9,14 +9,31 @@ import { Ingredient } from '../Models/ingredient.model';
 })
 export class RecipeListService {
   recipeList: Recipe[];
-  IngredientsList: Ingredient[];
+  ingredientsList: Ingredient[];
 
   constructor() {
     this.recipeList = MOCK_RECIPE_LIST;
-    this.IngredientsList = MOCK_INGREDIENTS;
+    this.ingredientsList = MOCK_INGREDIENTS;
   }
 
   getRecipeById(id: number): Recipe {
-    return this.recipeList.find((element) => element.id === id)!;
+    return this.recipeList.find((element) => element.id === id);
+  }
+
+  getIngredienNametById(id: number): string {
+    const ingredient =  this.ingredientsList.find((element) => element.id === id);
+    return ingredient.name;
+  }
+
+  getIngredientById(id: number): Ingredient {
+    return this.ingredientsList.find((element) => element.id === id)
+  }
+
+  getIngredientListById(idList: number[]): Ingredient[] {
+    const ingredients: Ingredient[] = []
+    for (let i = 0; i<idList.length; i++) {
+      ingredients.push(this.getIngredientById(idList[i]));
+    }
+    return ingredients;
   }
 }

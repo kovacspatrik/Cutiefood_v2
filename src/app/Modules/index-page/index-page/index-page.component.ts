@@ -27,7 +27,7 @@ export class IndexPageComponent implements OnInit {
 
     this.recipeListToShow = this.recipeListService.recipeList;
 
-    this.ingredientList = this.recipeListService.IngredientsList;
+    this.ingredientList = this.recipeListService.ingredientsList;
   }
 
   ngOnInit(): void {}

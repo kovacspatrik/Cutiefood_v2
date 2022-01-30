@@ -73,3 +73,5 @@ export const MOCK_INGREDIENTS_FOR_MOCK_RECIPES: Ingredient[] = [
     name: 'liszt',
   },
 ];
+
+export const MOCK_INGREDIENT_IDS: number[] = [0,1,2,3];

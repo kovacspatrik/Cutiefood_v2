@@ -29,7 +29,7 @@
 }
 
 ::ng-deep .mat-form-field-wrapper {
-  width: 400px;
+  width: 300px;
 }
 
 ::ng-deep .mat-accent .mat-slider-thumb {
@@ -45,5 +45,19 @@
 }
 
 .mat-slider {
-  width: 400px;
+  width: 300px;
 }
+
+.recipe-ingredients{
+  ng-select {
+    width: 300px;
+  }
+}
+
+//mat-form-field {
+//  width: 300px !important;
+//}
+//
+//.mat-form-field-wrapper {
+//  width: 300px !important;
+//}

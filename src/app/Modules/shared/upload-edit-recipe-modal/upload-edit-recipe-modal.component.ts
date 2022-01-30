@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Recipe } from 'src/app/Models/recipe.model';
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
-import {MOCK_INGREDIENTS_FOR_MOCK_RECIPES} from "../../../Services/mock-files/mock-ingredients";
-import {MOCK_USERS} from "../../../Services/mock-files/mock-users";
+import {MOCK_INGREDIENTS} from "../../../Services/mock-files/mock-ingredients";
+import {RecipeListService} from "../../../Services/recipe-list.service";
+import {Ingredient} from "../../../Models/ingredient.model";
 
 @Component({
   selector: 'app-upload-edit-recipe-modal',
@@ -13,7 +14,9 @@ export class UploadEditRecipeModalComponent {
   @Input() isEdit: boolean = false;
   @Input() recipe?: Recipe
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+  allIngredientsList = MOCK_INGREDIENTS;
+
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private recipeListService: RecipeListService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
