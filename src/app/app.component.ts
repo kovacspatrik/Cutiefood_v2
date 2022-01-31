@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, ActivatedRouteSnapshot, Router} from '@angular/router';
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'CutieFood';
-
-  constructor(private router: Router) {}
+  constructor() {
+  }
 }

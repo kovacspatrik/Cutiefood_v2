@@ -8,22 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl(),
-  });
+  email: string;
+  password: string;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.initForm();
   }
 
-  initForm() {
-    // this.loginForm.control
-  }
 
   submitForm() {
     this.router.navigate(['/home']);
+    const data = {
+      password: this.password,
+      email: this.email
+    }
+    console.log(data);
   }
 }

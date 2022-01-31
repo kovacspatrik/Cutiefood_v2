@@ -9,6 +9,7 @@ import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 export class AddToCalendarModalComponent implements OnInit {
   @ViewChild('content') closeModal: ElementRef
   selected: Date = new Date();
+  todaysDate: Date = new Date();
 
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
@@ -20,6 +21,7 @@ export class AddToCalendarModalComponent implements OnInit {
   }
 
   addToCalendar() {
+    // BEVÁSÁRLÓLISTÁHOZ ADNI!
     console.log(this.selected);
     this.modalService.dismissAll();
   }
