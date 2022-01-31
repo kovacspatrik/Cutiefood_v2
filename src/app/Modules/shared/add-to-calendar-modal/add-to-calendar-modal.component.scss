@@ -1,0 +1,11 @@
+@import "src/variables";
+
+.add-calendar-button {
+  border: none;
+  border-radius: 30px;
+  height: 40px;
+  width: 100px;
+  background-color: $cutiefood-orange;
+  color: white;
+  font-size: 16px;
+}

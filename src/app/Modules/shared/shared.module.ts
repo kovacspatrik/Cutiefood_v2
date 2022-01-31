@@ -22,7 +22,10 @@ import { MatSelectModule } from "@angular/material/select";
 import { UploadEditRecipeModalComponent } from './upload-edit-recipe-modal/upload-edit-recipe-modal.component';
 import { MatSliderModule } from "@angular/material/slider";
 import { AreYouSureDeleteModalComponent } from './are-you-sure-delete-modal/are-you-sure-delete-modal.component';
-
+import { AddToCalendarModalComponent } from './add-to-calendar-modal/add-to-calendar-modal.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
   imports: [
@@ -38,7 +41,10 @@ import { AreYouSureDeleteModalComponent } from './are-you-sure-delete-modal/are-
     NgSelectModule,
     FormsModule,
     MatListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule
   ],
   declarations: [
     RecipeCardComponent,
@@ -49,7 +55,8 @@ import { AreYouSureDeleteModalComponent } from './are-you-sure-delete-modal/are-
     RecipeCardListComponent,
     EventComponent,
     UploadEditRecipeModalComponent,
-    AreYouSureDeleteModalComponent
+    AreYouSureDeleteModalComponent,
+    AddToCalendarModalComponent
   ],
   exports: [
     RecipeCardComponent,
@@ -68,7 +75,10 @@ import { AreYouSureDeleteModalComponent } from './are-you-sure-delete-modal/are-
     MatInputModule,
     MatSelectModule,
     UploadEditRecipeModalComponent,
-    MatSliderModule
+    MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule
   ],
 })
 export class SharedModule {}

@@ -26,9 +26,7 @@
         </div>
     </div>
     <div class="modal-footer d-flex justify-content-center justify-content-lg-end">
-      <button type="button" class="btn btn-outline-dark" (click)="c('addCalendar click')">
-        Naptárhoz adás
-      </button>
+      <app-add-to-calendar-modal></app-add-to-calendar-modal>
       <button *ngIf="!isFavoritesPage" type="button" class="btn btn-outline-dark" (click)="c('addCalendar click')">
         Kedvencekhez adás
       </button>
