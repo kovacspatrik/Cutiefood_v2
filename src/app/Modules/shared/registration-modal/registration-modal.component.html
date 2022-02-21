@@ -1,0 +1,51 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h3 class="modal-title mb-0" id="modal-basic-title">Regisztráció</h3>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <mat-form-field appearance="outline" class="d-block">
+      <mat-label>Felhasználónév</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Adjon meg egy felhasználónevet!"
+        [(ngModel)]="registerData.userName"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="d-block">
+      <mat-label>Jelszó</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="Adjon meg egy jelszót!"
+        [(ngModel)]="registerData.password"
+      />
+    </mat-form-field>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button class="registration-button" (click)="d('Cross click')">
+      Mégsem
+    </button>
+    <button class="registration-button" (click)="registerUser()">
+      Regisztráció
+    </button>
+  </div>
+</ng-template>
+
+<button
+  class="align-self-center px-2"
+  type="submit"
+  class="registration-button"
+  (click)="open(content)"
+>
+  Regisztráció
+</button>

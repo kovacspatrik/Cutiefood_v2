@@ -4,16 +4,15 @@
       <h1>Receptjeim</h1>
     </div>
     <div
-      class="
-        col-md col-sm-12
-        d-flex
-        justify-content-center justify-content-md-end
-        my-3 my-md-0
-        align-items-center
-      "
+      class="col-md col-sm-12 d-flex justify-content-center justify-content-md-end my-3 my-md-0 align-items-center"
     >
-      <app-upload-edit-recipe-modal [recipe]="recipeList[0]"></app-upload-edit-recipe-modal>
+      <app-upload-edit-recipe-modal
+        [isEdit]="false"
+      ></app-upload-edit-recipe-modal>
     </div>
   </div>
-  <app-recipe-card-list [recipeList]="recipeList" [myRecipes]="true"></app-recipe-card-list>
+  <app-recipe-card-list
+    [recipeList]="recipeList"
+    [myRecipes]="true"
+  ></app-recipe-card-list>
 </div>

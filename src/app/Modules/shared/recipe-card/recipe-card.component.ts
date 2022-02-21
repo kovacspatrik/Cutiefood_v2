@@ -9,21 +9,27 @@ import { RecipeListService } from 'src/app/Services/recipe-list.service';
   styleUrls: ['./recipe-card.component.scss'],
 })
 export class RecipeCardComponent implements OnInit {
-  @Input() id: number;
+  @Input() recipe: Recipe;
   @Input() isFavoritesPage: boolean;
   @Input() myRecipes: boolean;
 
-  selectedRecipe!: Recipe;
-  numberOfIngredients!: number;
+  selectedRecipe: Recipe;
+  numberOfIngredients: number;
+
+  placeholderImage = 'https://via.placeholder.com/300x200';
 
   constructor(private recipeListService: RecipeListService) {}
 
   ngOnInit() {
-    this.selectedRecipe = this.recipeListService.getRecipeById(this.id);
-    this.numberOfIngredients = this.selectedRecipe.ingredients.length;
+    //this.recipe = this.recipeListService.getRecipeById(this.id);
+    this.numberOfIngredients = this.recipe.ingredients.length;
   }
 
   counter(i: number) {
     return new Array(i);
+  }
+
+  get recipeImageOrPlaceholder(): string {
+    return this.placeholderImage;
   }
 }

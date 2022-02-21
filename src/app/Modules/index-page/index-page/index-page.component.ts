@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgSelectConfig } from '@ng-select/ng-select';
 import { Ingredient } from 'src/app/Models/ingredient.model';
 import { Recipe } from 'src/app/Models/recipe.model';
 import { RecipeListService } from 'src/app/Services/recipe-list.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-index-page',
@@ -12,25 +14,21 @@ import { RecipeListService } from 'src/app/Services/recipe-list.service';
 export class IndexPageComponent implements OnInit {
   recipeList: Recipe[];
   recipeListToShow: Recipe[];
-  ingredientList: Ingredient[];
-  selectedIngredients: number[];
   searchText = '';
 
   constructor(
     private recipeListService: RecipeListService,
+    private http: HttpClient
   ) {
-    this.recipeList = this.recipeListService.recipeList;
-
-    // this.recipeList.forEach((element) => {
-    //   this.recipeList.push(element);
-    // })
-
-    this.recipeListToShow = this.recipeListService.recipeList;
-
-    this.ingredientList = this.recipeListService.ingredientsList;
+    // this.recipeList = this.recipeListService.recipeList;
+    // this.recipeListToShow = this.recipeListService.recipeList;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.recipeListService.getRecipes().subscribe((res) => {
+      this.recipeListToShow = res;
+    });
+  }
 
   OpenNewRecipeModal() {
     alert('ÚJ RECEPT MODAL');
@@ -38,7 +36,9 @@ export class IndexPageComponent implements OnInit {
 
   filterRecipes() {
     if (this.searchText != '') {
-      this.recipeListToShow = this.recipeList.filter((element) => element.name.toLowerCase().includes(this.searchText.toLowerCase()));
+      this.recipeListToShow = this.recipeList.filter((element) =>
+        element.name.toLowerCase().includes(this.searchText.toLowerCase())
+      );
     } else {
       this.recipeListToShow = this.recipeList;
     }

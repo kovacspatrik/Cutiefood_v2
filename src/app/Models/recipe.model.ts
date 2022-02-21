@@ -1,12 +1,12 @@
-import { Ingredient } from "./ingredient.model";
-import {User} from "./user.model";
+import { Ingredient, IngredientWithQuantity } from './ingredient.model';
+import { User } from './user.model';
 
 export class Recipe {
-    id: number;
-    name: string;
-    uploader: User;
-    ingredients: number[];
-    process: string;
-    diffLevel: number;
-    image?: string;
+  id?: number;
+  name: string;
+  user?: User;
+  ingredients: IngredientWithQuantity[];
+  process: string;
+  diffLevel: number;
+  picture?: string;
 }

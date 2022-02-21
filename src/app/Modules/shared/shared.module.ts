@@ -26,6 +26,7 @@ import { AddToCalendarModalComponent } from './add-to-calendar-modal/add-to-cale
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCardModule } from "@angular/material/card";
+import { RegistrationModalComponent } from './registration-modal/registration-modal.component';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import { MatCardModule } from "@angular/material/card";
     EventComponent,
     UploadEditRecipeModalComponent,
     AreYouSureDeleteModalComponent,
-    AddToCalendarModalComponent
+    AddToCalendarModalComponent,
+    RegistrationModalComponent
   ],
   exports: [
     RecipeCardComponent,
