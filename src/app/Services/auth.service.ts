@@ -9,8 +9,7 @@ import { User } from '../Models/user.model';
   providedIn: 'root',
 })
 export class AuthService {
-  loggedInUser: User = null;
-  isLoggedIn = !(this.getUser() === null);
+  loggedInUser: User;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -18,12 +17,8 @@ export class AuthService {
     this.loggedInUser = user;
   }
 
-  getUser() {
-    if (this.loggedInUser) {
-      return this.loggedInUser;
-    } else {
-      return null;
-    }
+  getUser(): User {
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   login(user: User): Observable<User> {
@@ -31,8 +26,8 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.removeItem('user');
     this.router.navigate(['login']);
-    this.loggedInUser = null;
   }
 
   register(user: User): Observable<User> {

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +16,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('user')) {
+      this.router.navigate(['/home']);
+    }
+  }
 
   submitForm() {
     const user: User = {
@@ -23,16 +28,15 @@ export class LoginComponent implements OnInit {
       password: this.password,
     };
 
-    this.authService.login(user).subscribe((res) => {
-      this.authService.setUser(res);
-      this.router.navigate(['/home']);
-    });
-
-    // this.router.navigate(['/home']);
-    // const data = {
-    //   password: this.password,
-    //   email: this.email
-    // }
-    // console.log(data);
+    this.authService.login(user).subscribe(
+      (res) => {
+        this.authService.setUser(res);
+        localStorage.setItem('user', JSON.stringify(res));
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        alert(error.error.message);
+      }
+    );
   }
 }
