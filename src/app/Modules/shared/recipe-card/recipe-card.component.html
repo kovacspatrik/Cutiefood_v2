@@ -6,16 +6,16 @@
   />
   <div class="card-body pt-0 pb-1">
     <div class="row">
-      <div class="col-6">
+      <div class="col-12">
         <h2 class="recipe-name">{{ recipe.name }}</h2>
-      </div>
-      <div class="col d-flex justify-content-end">
-        <h3>Nehézség: {{ recipe.diffLevel }}</h3>
       </div>
     </div>
     <div class="row">
-      <div class="col-9">
+      <div class="col-auto">
         <h3 class="mb-0">Összetevők: {{ numberOfIngredients }}</h3>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <h3>Nehézség: {{ recipe.diffLevel }}</h3>
       </div>
     </div>
     <div class="row d-flex justify-content-end">
