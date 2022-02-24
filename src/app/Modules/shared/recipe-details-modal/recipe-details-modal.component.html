@@ -42,12 +42,16 @@
       *ngIf="!isFavoritesPage"
       type="button"
       class="btn btn-outline-dark"
-      (click)="c('addCalendar click')"
+      (click)="addToFavourites()"
     >
       Kedvencekhez adás
     </button>
     <div *ngIf="isFavoritesPage">
-      <button type="button" class="btn btn-danger" (click)="c('Delete click')">
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="deleteFromFavourites()"
+      >
         Eltávolítás a kedvencek közül
       </button>
     </div>

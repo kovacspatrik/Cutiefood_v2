@@ -6,6 +6,7 @@ import { Ingredient } from '../Models/ingredient.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from '../Models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +26,29 @@ export class RecipeListService {
 
   getRecipesByUserId(id: number): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(`${environment.apiUrl}/recipe/user/${id}`);
+  }
+
+  getUsersFavouriteRecipes(userId: number): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(
+      `${environment.apiUrl}/user-favourite-recipes/user/${userId}`
+    );
+  }
+
+  addToFavs(recipe: Recipe, user: User) {
+    const data = {
+      recipe,
+      user,
+    };
+    return this.http.post(
+      `${environment.apiUrl}/user-favourite-recipes/create`,
+      data
+    );
+  }
+
+  deleteFromFavs(userId: number, recipeId: number) {
+    return this.http.delete(
+      `${environment.apiUrl}/user-favourite-recipes/delete/user/${userId}/recipe/${recipeId}`
+    );
   }
 
   deleteRecipe(id: number) {
