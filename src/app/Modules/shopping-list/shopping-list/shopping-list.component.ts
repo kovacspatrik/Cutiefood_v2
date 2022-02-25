@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MOCK_INGREDIENTS } from '../../../Services/mock-files/mock-ingredients';
+import { Component, ViewChild } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
 import { Ingredient } from '../../../Models/ingredient.model';
 import { MatSelect } from '@angular/material/select';
-import { of } from 'rxjs';
 import { IngredientService } from 'src/app/Services/ingredient.service';
 
 @Component({
@@ -11,7 +9,7 @@ import { IngredientService } from 'src/app/Services/ingredient.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss'],
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent {
   @ViewChild('shopList') selectionList: MatSelectionList;
   @ViewChild('select') selectDropdown: MatSelect;
   ingredients: Ingredient[];
@@ -27,8 +25,6 @@ export class ShoppingListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
   deleteSelected() {
     if (this.selectedOptions) {
       this.selectedOptions.forEach((element) => {
@@ -40,19 +36,14 @@ export class ShoppingListComponent implements OnInit {
     }
   }
 
-  addToCart(itemId: number) {
-    console.log(
-      this.ingredients.find((res) => {
-        res.id === itemId;
-      })
-    );
-    //console.log(elementToAdd);
-    // if (this.shoppingList.includes(elementToAdd)) {
-    //   alert('Ez a termék már szerepel a listán!');
-    // } else {
-    //   this.shoppingList.push(elementToAdd);
-    //   this.selectDropdown.value = [];
-    // }
+  addToCart(event: any) {
+    if (this.shoppingList.includes(event)) {
+      alert('Ez a termék már szerepel a listán!');
+      this.selectDropdown.value = [];
+    } else {
+      this.shoppingList.push(event);
+      this.selectDropdown.value = [];
+    }
   }
 
   selectAll() {
@@ -63,5 +54,9 @@ export class ShoppingListComponent implements OnInit {
       this.selectionList.selectAll();
       this.allSelected = !this.allSelected;
     }
+  }
+
+  saveShoppingList() {
+    alert('SAVE SHOPPING LIST');
   }
 }

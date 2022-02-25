@@ -2,7 +2,9 @@
   <div class="container">
     <div *ngIf="shoppingList.length > 0" class="row">
       <div class="col-12 col-md-6">
-        <h1>Bevásárlólistám</h1>
+        <h1>
+          A bevásárlólista jelenleg {{ shoppingList.length }} elemet tartalmaz
+        </h1>
       </div>
       <div class="col d-flex justify-content-md-end">
         <button (click)="selectAll()" class="select-all-button">
@@ -28,13 +30,16 @@
           >
             <mat-option
               *ngFor="let ingredient of ingredients"
-              [value]="ingredient.id"
+              [value]="ingredient"
               >{{ ingredient.name }}</mat-option
             >
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col d-flex justify-content-md-end mt-2 mt-md-0">
+        <button (click)="saveShoppingList()" class="delete-button mr-2">
+          Mentés
+        </button>
         <button (click)="deleteSelected()" class="delete-button">
           Kijelöltek törlése
         </button>
