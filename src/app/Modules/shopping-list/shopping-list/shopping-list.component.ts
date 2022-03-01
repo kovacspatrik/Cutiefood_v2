@@ -3,6 +3,9 @@ import { MatSelectionList } from '@angular/material/list';
 import { Ingredient } from '../../../Models/ingredient.model';
 import { MatSelect } from '@angular/material/select';
 import { IngredientService } from 'src/app/Services/ingredient.service';
+import { ShoppingListService } from 'src/app/Services/shopping-list.service';
+import { AuthService } from 'src/app/Services/auth.service';
+import { ShopListItem } from 'src/app/Models/ShopListItem.model';
 
 @Component({
   selector: 'app-shopping-list',
@@ -12,51 +15,63 @@ import { IngredientService } from 'src/app/Services/ingredient.service';
 export class ShoppingListComponent {
   @ViewChild('shopList') selectionList: MatSelectionList;
   @ViewChild('select') selectDropdown: MatSelect;
+  user = this.authService.getUser();
   ingredients: Ingredient[];
   shoppingList: Ingredient[] = [];
 
   selectedOptions: string[];
   allSelected = false;
 
-  constructor(private ingredientService: IngredientService) {
+  constructor(
+    private ingredientService: IngredientService,
+    private shopListService: ShoppingListService,
+    private authService: AuthService
+  ) {
+    this.loadIngredientList();
+
+    this.loadShoppingList();
+  }
+
+  loadIngredientList() {
     this.ingredientService.getIngredients().subscribe((res) => {
       this.ingredients = res;
-      console.log(this.ingredients);
     });
   }
 
-  deleteSelected() {
-    if (this.selectedOptions) {
-      this.selectedOptions.forEach((element) => {
-        const itemId = this.shoppingList.find((res) => res.name === element);
-        this.shoppingList = this.shoppingList.filter(
-          (element) => element != itemId
-        );
+  loadShoppingList() {
+    this.shopListService
+      .getShoppingListByUserId(this.user.id)
+      .subscribe((res) => {
+        this.shoppingList = res;
+      });
+  }
+
+  deleteItemFromList(item: Ingredient) {
+    this.shopListService
+      .deleteShoppingListItem(this.user.id, item.id)
+      .subscribe(() => {
+        this.loadShoppingList();
+      });
+  }
+
+  addToCart(item: Ingredient) {
+    if (this.shoppingList.includes(item)) {
+      console.log('Ez a termék már szerepel a listán!');
+    } else {
+      const data: ShopListItem = {
+        user: this.user,
+        ingredient: item,
+      };
+      this.shopListService.createShoppingListItem(data).subscribe(() => {
+        this.selectDropdown.value = [];
+        this.loadShoppingList();
       });
     }
   }
 
-  addToCart(event: any) {
-    if (this.shoppingList.includes(event)) {
-      alert('Ez a termék már szerepel a listán!');
-      this.selectDropdown.value = [];
-    } else {
-      this.shoppingList.push(event);
-      this.selectDropdown.value = [];
-    }
-  }
-
-  selectAll() {
-    if (this.allSelected) {
-      this.selectionList.deselectAll();
-      this.allSelected = !this.allSelected;
-    } else {
-      this.selectionList.selectAll();
-      this.allSelected = !this.allSelected;
-    }
-  }
-
-  saveShoppingList() {
-    alert('SAVE SHOPPING LIST');
+  clearShoppingList() {
+    this.shopListService.clearUserShoppingList(this.user.id).subscribe(() => {
+      this.loadShoppingList();
+    });
   }
 }

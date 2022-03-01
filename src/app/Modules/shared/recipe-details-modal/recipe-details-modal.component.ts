@@ -17,6 +17,7 @@ export class RecipeDetailsModalComponent {
   @Input() isCalendarPage = false;
 
   user: User;
+  placeholderImage: 'https://via.placeholder.com/600x400';
 
   constructor(
     config: NgbModalConfig,
@@ -48,5 +49,9 @@ export class RecipeDetailsModalComponent {
       .deleteFromFavs(this.user.id, this.recipe.id)
       .subscribe();
     this.modalService.dismissAll();
+  }
+
+  get recipeImageOrPlaceholder(): string {
+    return this.placeholderImage;
   }
 }

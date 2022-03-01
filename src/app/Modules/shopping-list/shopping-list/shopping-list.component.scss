@@ -33,4 +33,18 @@
     background-color: $cutiefood-orange;
     padding: 0px 10px 0px 10px;
   }
+
+  .delete-list-item-icon {
+    color: red;
+    cursor: pointer;
+  }
+
+  ::ng-deep .mat-list-item-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ::ng-deep mat-list-item {
+    font-size: 20px;
+  }
 }
