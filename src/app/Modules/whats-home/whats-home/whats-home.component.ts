@@ -1,46 +1,79 @@
-import { Component } from '@angular/core';
-import { MOCK_INGREDIENTS } from "../../../Services/mock-files/mock-ingredients";
-import {MOCK_RECIPE_LIST} from "../../../Services/mock-files/mock-recipes";
-import {Ingredient} from "../../../Models/ingredient.model";
-import {Recipe} from "../../../Models/recipe.model";
+import { Component, OnInit } from '@angular/core';
+import {
+  Ingredient,
+  IngredientWithQuantity,
+} from '../../../Models/ingredient.model';
+import { Recipe } from '../../../Models/recipe.model';
+import { RecipeListService } from 'src/app/Services/recipe-list.service';
+import { IngredientService } from 'src/app/Services/ingredient.service';
 
 @Component({
   selector: 'app-whats-home',
   templateUrl: './whats-home.component.html',
-  styleUrls: ['./whats-home.component.scss']
+  styleUrls: ['./whats-home.component.scss'],
 })
-export class WhatsHomeComponent {
-  mock_ingredients = MOCK_INGREDIENTS;
-  recipes = MOCK_RECIPE_LIST;
+export class WhatsHomeComponent implements OnInit {
+  ingredients: Ingredient[];
+  recipes: Recipe[];
 
-  selectedIngredients: number[];
+  selectedIngredients: Ingredient[];
   recipeListToShow: Recipe[] = [];
 
-  constructor() {}
-
-  getIngredientById(id: number): Ingredient {
-    return this.mock_ingredients.find(x => x.id === id);
+  constructor(
+    private recipeService: RecipeListService,
+    private ingredientService: IngredientService
+  ) {
+    this.initIngredientList();
+    this.initRecipeList();
   }
 
-  filterRecipes(): void {
-    if(this.selectedIngredients.length > 0) {
-      this.recipeListToShow = [];
+  ngOnInit(): void {}
 
-      for (let recipe of this.recipes) {
-        let goodRecipe = true;
+  initRecipeList() {
+    this.recipeService.getRecipes().subscribe((res) => {
+      this.recipes = res;
+    });
+  }
 
-        for (let ingredient of this.selectedIngredients) {
-          if (!(recipe.ingredients.some((res) => JSON.stringify(res) === JSON.stringify(this.getIngredientById(ingredient))))){
-            goodRecipe = false;
+  initIngredientList() {
+    this.ingredientService.getIngredients().subscribe((res) => {
+      this.ingredients = res;
+    });
+  }
+
+  showMatchingRecipes(items: Ingredient[]) {
+    this.selectedIngredients = items;
+
+    if (this.selectedIngredients.length > 0) {
+      this.recipes.forEach((recipe) => {
+        if (this.hasHalfOfSelected(recipe, this.selectedIngredients)) {
+          if (!this.recipeListToShow.includes(recipe)) {
+            this.recipeListToShow.push(recipe);
           }
         }
+      });
+    }
+  }
 
-        if (goodRecipe) {
-          this.recipeListToShow.push(recipe);
+  hasHalfOfSelected(
+    recipe: Recipe,
+    selectedIngredients: Ingredient[]
+  ): boolean {
+    const recipeIngredientCount = recipe.ingredients.length;
+    let matchingIngredients = 0;
+
+    recipe.ingredients.forEach((ingredient: IngredientWithQuantity) => {
+      selectedIngredients.forEach((selected) => {
+        if (selected.name === ingredient.ingredient.name) {
+          matchingIngredients++;
         }
+      });
+    });
 
-      }
-
+    if (matchingIngredients >= recipeIngredientCount / 2) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
