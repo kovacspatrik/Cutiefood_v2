@@ -44,6 +44,10 @@ export class WhatsHomeComponent implements OnInit {
   showMatchingRecipes(items: Ingredient[]) {
     this.selectedIngredients = items;
 
+    if (!(this.selectedIngredients.length > 2)) {
+      this.recipeListToShow = [];
+    }
+
     if (this.selectedIngredients.length > 0) {
       this.recipes.forEach((recipe) => {
         if (this.hasHalfOfSelected(recipe, this.selectedIngredients)) {
