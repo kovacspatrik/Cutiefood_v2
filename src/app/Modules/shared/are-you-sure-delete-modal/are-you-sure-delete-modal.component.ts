@@ -28,6 +28,5 @@ export class AreYouSureDeleteModalComponent implements OnInit {
   deleteRecipe() {
     this.recipeListService.deleteRecipe(this.recipeId).subscribe();
     this.modalService.dismissAll();
-    window.location.reload();
   }
 }

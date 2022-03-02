@@ -20,10 +20,6 @@ export class AppComponent implements OnInit {
     //console.log(this.noLoggedInUser());
   }
 
-  ngAfterViewInit() {
-    this.isLoggedIn = this.authService.isLoggedIn;
-  }
-
   ngOnInit() {
     if (this.authService.loggedInUser === null) {
       this.authService.logout();

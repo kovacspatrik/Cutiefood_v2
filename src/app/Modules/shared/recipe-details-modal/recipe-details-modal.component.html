@@ -20,7 +20,7 @@
       <div class="w-100 d-flex justify-content-center my-2">
         <img
           class="img-fluid recipe-image"
-          src="{{ recipe.picture }}"
+          src="{{ recipeImageOrPlaceholder }}"
           alt="{{ recipe.name }} photo"
         />
       </div>
@@ -42,12 +42,16 @@
       *ngIf="!isFavoritesPage"
       type="button"
       class="btn btn-outline-dark"
-      (click)="c('addCalendar click')"
+      (click)="addToFavourites()"
     >
       Kedvencekhez adás
     </button>
     <div *ngIf="isFavoritesPage">
-      <button type="button" class="btn btn-danger" (click)="c('Delete click')">
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="deleteFromFavourites()"
+      >
         Eltávolítás a kedvencek közül
       </button>
     </div>

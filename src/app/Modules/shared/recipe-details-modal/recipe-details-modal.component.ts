@@ -1,23 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Recipe } from 'src/app/Models/recipe.model';
-import {RecipeListService} from "../../../Services/recipe-list.service";
+import { User } from 'src/app/Models/user.model';
+import { AuthService } from 'src/app/Services/auth.service';
+import { RecipeListService } from '../../../Services/recipe-list.service';
 
 @Component({
   selector: 'app-recipe-details-modal',
   templateUrl: './recipe-details-modal.component.html',
   styleUrls: ['./recipe-details-modal.component.scss'],
 })
-export class RecipeDetailsModalComponent implements OnInit {
+export class RecipeDetailsModalComponent {
   @Input() recipe: Recipe;
   @Input() isFavoritesPage: boolean;
 
   @Input() isCalendarPage = false;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private recipeListService: RecipeListService) {
+  user: User;
+  placeholderImage: 'https://via.placeholder.com/600x400';
+
+  constructor(
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private recipeListService: RecipeListService,
+    private authService: AuthService
+  ) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
+    this.user = this.authService.getUser();
   }
 
   getIngredientNameById(id: number) {
@@ -28,5 +39,19 @@ export class RecipeDetailsModalComponent implements OnInit {
     this.modalService.open(content, { size: 'lg', backdrop: true });
   }
 
-  ngOnInit(): void {}
+  addToFavourites() {
+    this.recipeListService.addToFavs(this.recipe, this.user).subscribe();
+    this.modalService.dismissAll();
+  }
+
+  deleteFromFavourites() {
+    this.recipeListService
+      .deleteFromFavs(this.user.id, this.recipe.id)
+      .subscribe();
+    this.modalService.dismissAll();
+  }
+
+  get recipeImageOrPlaceholder(): string {
+    return this.placeholderImage;
+  }
 }

@@ -1,67 +1,77 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MOCK_INGREDIENTS } from '../../../Services/mock-files/mock-ingredients';
+import { Component, ViewChild } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
 import { Ingredient } from '../../../Models/ingredient.model';
 import { MatSelect } from '@angular/material/select';
-import { of } from 'rxjs';
 import { IngredientService } from 'src/app/Services/ingredient.service';
+import { ShoppingListService } from 'src/app/Services/shopping-list.service';
+import { AuthService } from 'src/app/Services/auth.service';
+import { ShopListItem } from 'src/app/Models/ShopListItem.model';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss'],
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent {
   @ViewChild('shopList') selectionList: MatSelectionList;
   @ViewChild('select') selectDropdown: MatSelect;
+  user = this.authService.getUser();
   ingredients: Ingredient[];
   shoppingList: Ingredient[] = [];
 
   selectedOptions: string[];
   allSelected = false;
 
-  constructor(private ingredientService: IngredientService) {
+  constructor(
+    private ingredientService: IngredientService,
+    private shopListService: ShoppingListService,
+    private authService: AuthService
+  ) {
+    this.loadIngredientList();
+
+    this.loadShoppingList();
+  }
+
+  loadIngredientList() {
     this.ingredientService.getIngredients().subscribe((res) => {
       this.ingredients = res;
-      console.log(this.ingredients);
     });
   }
 
-  ngOnInit(): void {}
+  loadShoppingList() {
+    this.shopListService
+      .getShoppingListByUserId(this.user.id)
+      .subscribe((res) => {
+        this.shoppingList = res;
+      });
+  }
 
-  deleteSelected() {
-    if (this.selectedOptions) {
-      this.selectedOptions.forEach((element) => {
-        const itemId = this.shoppingList.find((res) => res.name === element);
-        this.shoppingList = this.shoppingList.filter(
-          (element) => element != itemId
-        );
+  deleteItemFromList(item: Ingredient) {
+    this.shopListService
+      .deleteShoppingListItem(this.user.id, item.id)
+      .subscribe(() => {
+        this.loadShoppingList();
+      });
+  }
+
+  addToCart(item: Ingredient) {
+    if (this.shoppingList.includes(item)) {
+      console.log('Ez a termék már szerepel a listán!');
+    } else {
+      const data: ShopListItem = {
+        user: this.user,
+        ingredient: item,
+      };
+      this.shopListService.createShoppingListItem(data).subscribe(() => {
+        this.selectDropdown.value = [];
+        this.loadShoppingList();
       });
     }
   }
 
-  addToCart(itemId: number) {
-    console.log(
-      this.ingredients.find((res) => {
-        res.id === itemId;
-      })
-    );
-    //console.log(elementToAdd);
-    // if (this.shoppingList.includes(elementToAdd)) {
-    //   alert('Ez a termék már szerepel a listán!');
-    // } else {
-    //   this.shoppingList.push(elementToAdd);
-    //   this.selectDropdown.value = [];
-    // }
-  }
-
-  selectAll() {
-    if (this.allSelected) {
-      this.selectionList.deselectAll();
-      this.allSelected = !this.allSelected;
-    } else {
-      this.selectionList.selectAll();
-      this.allSelected = !this.allSelected;
-    }
+  clearShoppingList() {
+    this.shopListService.clearUserShoppingList(this.user.id).subscribe(() => {
+      this.loadShoppingList();
+    });
   }
 }

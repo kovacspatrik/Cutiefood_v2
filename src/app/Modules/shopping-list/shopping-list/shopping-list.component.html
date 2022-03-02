@@ -2,22 +2,24 @@
   <div class="container">
     <div *ngIf="shoppingList.length > 0" class="row">
       <div class="col-12 col-md-6">
-        <h1>Bevásárlólistám</h1>
-      </div>
-      <div class="col d-flex justify-content-md-end">
-        <button (click)="selectAll()" class="select-all-button">
-          {{ this.allSelected ? "Kijelölés törlése" : "Összes kijelölése" }}
-        </button>
+        <h1>
+          A bevásárlólista jelenleg {{ shoppingList.length }} elemet tartalmaz
+        </h1>
       </div>
     </div>
     <div *ngIf="!(shoppingList.length > 0)">
       <h1>A bevásárlólista jelenleg üres!</h1>
     </div>
-    <mat-selection-list #shopList [(ngModel)]="selectedOptions">
-      <mat-list-option *ngFor="let item of shoppingList" [value]="item.name">
+    <mat-list #shopList [(ngModel)]="selectedOptions">
+      <mat-list-item *ngFor="let item of shoppingList">
         {{ item.name }}
-      </mat-list-option>
-    </mat-selection-list>
+        <mat-icon
+          (click)="deleteItemFromList(item)"
+          class="delete-list-item-icon"
+          >delete</mat-icon
+        >
+      </mat-list-item>
+    </mat-list>
     <div class="row my-3">
       <div class="col-12 col-md-6 d-flex">
         <mat-form-field appearance="outline">
@@ -28,15 +30,15 @@
           >
             <mat-option
               *ngFor="let ingredient of ingredients"
-              [value]="ingredient.id"
+              [value]="ingredient"
               >{{ ingredient.name }}</mat-option
             >
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col d-flex justify-content-md-end mt-2 mt-md-0">
-        <button (click)="deleteSelected()" class="delete-button">
-          Kijelöltek törlése
+        <button (click)="clearShoppingList()" class="delete-button">
+          Összes törlése
         </button>
       </div>
     </div>
