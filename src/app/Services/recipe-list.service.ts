@@ -34,6 +34,10 @@ export class RecipeListService {
     );
   }
 
+  uploadRecipe(recipe: Recipe) {
+    return this.http.post(`${environment.apiUrl}/recipe/create`, recipe);
+  }
+
   addToFavs(recipe: Recipe, user: User) {
     const data = {
       recipe,

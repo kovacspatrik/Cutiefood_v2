@@ -27,6 +27,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCardModule } from "@angular/material/card";
 import { RegistrationModalComponent } from './registration-modal/registration-modal.component';
+import { IngredientWithQuantityPickerComponent } from './ingredient-with-quantity-picker/ingredient-with-quantity-picker.component';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { RegistrationModalComponent } from './registration-modal/registration-mo
     UploadEditRecipeModalComponent,
     AreYouSureDeleteModalComponent,
     AddToCalendarModalComponent,
-    RegistrationModalComponent
+    RegistrationModalComponent,
+    IngredientWithQuantityPickerComponent
   ],
   exports: [
     RecipeCardComponent,

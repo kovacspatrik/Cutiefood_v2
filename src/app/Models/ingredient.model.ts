@@ -6,6 +6,4 @@ export interface Ingredient {
 export interface IngredientWithQuantity {
   ingredient: Ingredient;
   quantity: string;
-  recipeId?: number;
-  ingredientId?: number;
 }

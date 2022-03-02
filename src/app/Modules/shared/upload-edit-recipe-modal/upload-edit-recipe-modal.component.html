@@ -43,17 +43,22 @@
       ></mat-slider>
     </div>
     <div
-      class="recipe-ingredients my-3 d-flex justify-content-between align-items-center px-0 px-md-5"
+      class="recipe-ingredients my-3 d-flex flex-column justify-content-between align-items-center px-0 px-md-5"
     >
       <mat-label class="mr-2 mr-md-3">Összetevők: </mat-label>
-      <ng-select
+      <div *ngFor="let ingredient of recipe.ingredients">
+        <app-ingredient-with-quantity-picker
+          [ingredientList]="allIngredientsList"
+        ></app-ingredient-with-quantity-picker>
+      </div>
+      <!-- <ng-select
         [multiple]="true"
         [clearable]="false"
         [items]="allIngredientsList"
         [bindValue]="'id'"
         [bindLabel]="'name'"
         [(ngModel)]="recipe.ingredients"
-      ></ng-select>
+      ></ng-select> -->
     </div>
     <div
       class="recipe-process my-3 d-flex justify-content-between align-items-center px-0 px-md-5"
