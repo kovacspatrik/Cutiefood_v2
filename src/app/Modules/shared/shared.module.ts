@@ -16,18 +16,19 @@ import { LoginComponent } from '../login/login/login.component';
 import { RecipeCardListComponent } from './recipe-card-list/recipe-card-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-import { EventComponent } from "../calendar/event/event.component";
-import { MatListModule } from "@angular/material/list";
-import { MatSelectModule } from "@angular/material/select";
+import { EventComponent } from '../calendar/event/event.component';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { UploadEditRecipeModalComponent } from './upload-edit-recipe-modal/upload-edit-recipe-modal.component';
-import { MatSliderModule } from "@angular/material/slider";
+import { MatSliderModule } from '@angular/material/slider';
 import { AreYouSureDeleteModalComponent } from './are-you-sure-delete-modal/are-you-sure-delete-modal.component';
 import { AddToCalendarModalComponent } from './add-to-calendar-modal/add-to-calendar-modal.component';
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatNativeDateModule } from "@angular/material/core";
-import { MatCardModule } from "@angular/material/card";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
 import { RegistrationModalComponent } from './registration-modal/registration-modal.component';
-import { IngredientWithQuantityPickerComponent } from './ingredient-with-quantity-picker/ingredient-with-quantity-picker.component';
+import { MatOptionModule } from '@angular/material/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { IngredientWithQuantityPickerComponent } from './ingredient-with-quantit
     RouterModule,
     NgbModule,
     BrowserAnimationsModule,
+    BrowserModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
@@ -46,7 +48,10 @@ import { IngredientWithQuantityPickerComponent } from './ingredient-with-quantit
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatInputModule,
   ],
   declarations: [
     RecipeCardComponent,
@@ -60,11 +65,11 @@ import { IngredientWithQuantityPickerComponent } from './ingredient-with-quantit
     AreYouSureDeleteModalComponent,
     AddToCalendarModalComponent,
     RegistrationModalComponent,
-    IngredientWithQuantityPickerComponent
   ],
   exports: [
     RecipeCardComponent,
     RecipeDetailsModalComponent,
+    BrowserAnimationsModule,
     HeaderComponent,
     FooterComponent,
     LoginComponent,
@@ -82,7 +87,9 @@ import { IngredientWithQuantityPickerComponent } from './ingredient-with-quantit
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    MatOptionModule,
+    MatInputModule,
   ],
 })
 export class SharedModule {}

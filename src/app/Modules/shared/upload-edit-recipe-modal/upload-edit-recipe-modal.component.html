@@ -43,22 +43,44 @@
       ></mat-slider>
     </div>
     <div
-      class="recipe-ingredients my-3 d-flex flex-column justify-content-between align-items-center px-0 px-md-5"
+      class="recipe-ingredients my-3 d-flex justify-content-between align-items-center px-0 px-md-5"
     >
-      <mat-label class="mr-2 mr-md-3">Összetevők: </mat-label>
-      <div *ngFor="let ingredient of recipe.ingredients">
-        <app-ingredient-with-quantity-picker
-          [ingredientList]="allIngredientsList"
-        ></app-ingredient-with-quantity-picker>
+      <mat-label class="mr-2 mr-md-3 my-3">Összetevők: </mat-label>
+
+      <mat-list
+        *ngIf="recipe.ingredients"
+        #ingredientList
+        ngDefaultControl
+        class="mr-3"
+      >
+        <mat-list-item *ngFor="let ingredient of recipe.ingredients">
+          <input
+            type="text"
+            class="quantity-input mr-2"
+            [(ngModel)]="ingredient.quantity"
+          />
+          <p class="mb-0">{{ ingredient.ingredient.name }}</p>
+          <mat-icon
+            (click)="removeIngredient(ingredient)"
+            class="delete-ingredient-icon"
+            >delete</mat-icon
+          >
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-around mr-3">
+        <mat-form-field appearance="outline">
+          <mat-select #select (valueChange)="addIngredient($event)">
+            <mat-option
+              *ngFor="let ingredient of allIngredientsList"
+              [value]="ingredient"
+            >
+              {{ ingredient.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <!-- <ng-select
-        [multiple]="true"
-        [clearable]="false"
-        [items]="allIngredientsList"
-        [bindValue]="'id'"
-        [bindLabel]="'name'"
-        [(ngModel)]="recipe.ingredients"
-      ></ng-select> -->
     </div>
     <div
       class="recipe-process my-3 d-flex justify-content-between align-items-center px-0 px-md-5"

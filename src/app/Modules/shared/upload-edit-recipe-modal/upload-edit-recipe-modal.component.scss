@@ -48,10 +48,25 @@
   width: 300px;
 }
 
-.recipe-ingredients{
+.recipe-ingredients {
   ng-select {
     width: 300px;
   }
+}
+
+.quantity-input {
+  width: 100px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}
+
+.delete-ingredient-icon {
+  color: red;
+  cursor: pointer;
+}
+
+::ng-deep .ingredient-select {
+  width: 300px;
 }
 
 //mat-form-field {
