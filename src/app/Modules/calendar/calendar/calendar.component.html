@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center px-3 calendar-page">
-  <div class="row d-flex justify-content-center">
-    <div *ngFor="let day of weekDays" class="col-12 col-md">
-      <app-day-cell headText="{{day}}"></app-day-cell>
+  <div class="row d-flex justify-content-center w-100 h-100">
+    <div *ngFor="let day of weekDays" class="col-12 col-md h-100">
+      <app-day-cell headText="{{ day }}"></app-day-cell>
     </div>
   </div>
 </div>
