@@ -23,7 +23,7 @@ export class UploadEditRecipeModalComponent {
   @Input() recipe?: Recipe;
 
   allIngredientsList: Ingredient[] = [];
-  proba = false;
+  image: File = null;
 
   constructor(
     config: NgbModalConfig,
@@ -77,5 +77,11 @@ export class UploadEditRecipeModalComponent {
         this.recipe.ingredients.splice(i, 1);
       }
     }
+  }
+
+  fileChange(event: any) {
+    this.image = event.target.files[0];
+
+    console.log(this.image);
   }
 }
