@@ -1,15 +1,18 @@
 <div class="day-cell my-3 my-md-0">
-  <h1 class="text-center">{{headText}}</h1>
+  <h1 class="text-center">{{ headText }}</h1>
   <div *ngIf="!elements" class="d-flex justify-content-center">
     <div class="row">
       <div class="col-12 d-flex justify-content-center">
-        <app-recipe-details-modal [recipe]="recipe" [isCalendarPage]="true"></app-recipe-details-modal>
+        <!-- <app-recipe-details-modal
+          [recipe]="recipe"
+          [isCalendarPage]="true"
+        ></app-recipe-details-modal> -->
       </div>
       <div class="col-12 d-flex justify-content-center">
-        <app-event [recipe]="recipe"></app-event>
+        <!-- <app-event [recipe]="recipe"></app-event> -->
       </div>
       <div class="col-12 d-flex justify-content-center">
-        <app-event [recipe]="recipe"></app-event>
+        <!-- <app-event [recipe]="recipe"></app-event> -->
       </div>
     </div>
   </div>

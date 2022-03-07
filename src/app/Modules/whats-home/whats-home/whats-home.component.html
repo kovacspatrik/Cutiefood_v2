@@ -2,31 +2,27 @@
   <div class="container">
     <div class="row d-flex justify-content-center justify-content-md-start">
       <div class="col-9">
-        <ng-select [items]="mock_ingredients" [hideSelected]="true" [multiple]="true" [bindValue]="'id'"
-        [bindLabel]="'name'" [(ngModel)]="selectedIngredients"></ng-select>
+        <ng-select
+          [items]="ingredients"
+          [hideSelected]="true"
+          [multiple]="true"
+          [bindValue]="'id'"
+          [bindLabel]="'name'"
+          (change)="showMatchingRecipes($event)"
+        ></ng-select>
       </div>
       <div class="col d-flex justify-content-center justify-content-md-start">
         <button
-          (click)="filterRecipes()"
-          class="
-              search-button
-              mx-3
-              my-2 my-sm-0
-              d-flex
-              justify-content-center
-              align-items-center
-            "
+          class="search-button mx-3 my-2 my-sm-0 d-flex justify-content-center align-items-center"
           title="Keresés"
         >
           <mat-icon>search</mat-icon>
         </button>
       </div>
-     </div>
+    </div>
   </div>
-  <div *ngIf="!(recipeListToShow.length > 0)" class="container my-2">
-    <h1>Nincs megjelenítendő recept!</h1>
+  <div *ngIf="recipeListToShow.length === 0" class="container my-2">
+    <h1>Adjon meg hozzávalókat!</h1>
   </div>
   <app-recipe-card-list [recipeList]="recipeListToShow"></app-recipe-card-list>
 </div>
-
-

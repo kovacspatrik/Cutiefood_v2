@@ -17,7 +17,7 @@ export class RecipeDetailsModalComponent {
   @Input() isCalendarPage = false;
 
   user: User;
-  placeholderImage: 'https://via.placeholder.com/600x400';
+  placeholderImage: '../../../../assets/images/cutiefood_placeholder.png';
 
   constructor(
     config: NgbModalConfig,
@@ -51,7 +51,7 @@ export class RecipeDetailsModalComponent {
     this.modalService.dismissAll();
   }
 
-  get recipeImageOrPlaceholder(): string {
+  recipeImageOrPlaceholder(): string {
     return this.placeholderImage;
   }
 }

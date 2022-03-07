@@ -16,7 +16,7 @@ export class RecipeCardComponent implements OnInit {
   selectedRecipe: Recipe;
   numberOfIngredients: number;
 
-  placeholderImage = 'https://via.placeholder.com/300x200';
+  placeholderImage = '../../../../assets/images/cutiefood_placeholder.png';
 
   constructor(private recipeListService: RecipeListService) {}
 

@@ -10,7 +10,7 @@
     <div *ngIf="!(shoppingList.length > 0)">
       <h1>A bevásárlólista jelenleg üres!</h1>
     </div>
-    <mat-list #shopList [(ngModel)]="selectedOptions">
+    <mat-list #shopList [(ngModel)]="selectedOptions" ngDefaultControl>
       <mat-list-item *ngFor="let item of shoppingList">
         {{ item.name }}
         <mat-icon
