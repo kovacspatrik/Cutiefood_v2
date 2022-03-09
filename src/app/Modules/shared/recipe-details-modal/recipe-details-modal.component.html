@@ -37,7 +37,9 @@
   <div
     class="modal-footer d-flex justify-content-center justify-content-lg-end"
   >
-    <app-add-to-calendar-modal></app-add-to-calendar-modal>
+    <app-add-to-calendar-modal
+      *ngIf="!isCalendarPage"
+    ></app-add-to-calendar-modal>
     <button
       *ngIf="!isFavoritesPage"
       type="button"

@@ -12,11 +12,7 @@ export class EventComponent implements OnInit {
   @Input() name: string;
   @Input() img: string;
 
-  constructor(private recipeService: RecipeListService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.recipeService.getRecipes().subscribe((res) => {
-      this.recipe = res[1];
-    });
-  }
+  ngOnInit(): void {}
 }
