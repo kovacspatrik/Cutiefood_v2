@@ -1,14 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "variables";
 
-/* Import Google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
-
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
 /* Import NG Select */
 @import "~@ng-select/ng-select/themes/default.theme.css";
+
+/* Import Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 
 html,
 body {
@@ -16,7 +16,10 @@ body {
 }
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+}
+
+* {
+  font-family: "Sriracha", cursive;
 }
 
 .cdk-global-overlay-wrapper,
