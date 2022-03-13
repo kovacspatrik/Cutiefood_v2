@@ -60,6 +60,7 @@ export class UploadEditRecipeModalComponent {
     } else {
       this.recipeListService.uploadRecipe(this.recipe).subscribe();
     }
+    this.modalService.dismissAll();
   }
 
   addIngredient(item: Ingredient) {
