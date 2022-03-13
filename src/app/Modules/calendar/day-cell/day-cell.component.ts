@@ -10,5 +10,5 @@ import { MOCK_RECIPE_LIST } from '../../../Services/mock-files/mock-recipes';
 })
 export class DayCellComponent {
   @Input() day: WeekDays;
-  recipe: Recipe = MOCK_RECIPE_LIST[0];
+  @Input() recipes: Recipe[] = [];
 }

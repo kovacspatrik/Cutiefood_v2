@@ -3,12 +3,16 @@
 .event-box {
   border: none;
   border-radius: 10px;
-  width: 90%;
   background-color: $cutiefood-orange;
+  width: 100%;
 
-  .col-12 {
-    padding: 0px;
+  .recipe-title {
+    width: 55px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+
   .event-image {
     width: 70%;
     height: 100%;

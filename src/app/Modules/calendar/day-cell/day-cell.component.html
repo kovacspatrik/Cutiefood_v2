@@ -1,21 +1,12 @@
-<div class="day-cell my-3 my-md-0">
+<div class="day-cell h-100">
   <h1 class="text-center my-1">{{ day.name }}</h1>
   <h3 class="text-center font-weight-bold">{{ day.date }}</h3>
   <div class="d-flex justify-content-center">
     <div class="row">
-      <div class="col-12 d-flex justify-content-center">
-        <app-recipe-details-modal
-          [recipe]="recipe"
-          [isCalendarPage]="true"
-        ></app-recipe-details-modal>
-      </div>
-      <div class="col-12 d-flex justify-content-center">
-        <app-recipe-details-modal
-          [recipe]="recipe"
-          [isCalendarPage]="true"
-        ></app-recipe-details-modal>
-      </div>
-      <div class="col-12 d-flex justify-content-center">
+      <div
+        *ngFor="let recipe of recipes"
+        class="col-12 d-flex justify-content-center"
+      >
         <app-recipe-details-modal
           [recipe]="recipe"
           [isCalendarPage]="true"

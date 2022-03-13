@@ -40,6 +40,9 @@
     <app-add-to-calendar-modal
       *ngIf="!isCalendarPage"
     ></app-add-to-calendar-modal>
+    <div *ngIf="isCalendarPage">
+      <button type="button" class="btn btn-danger">Törlés a naptárból</button>
+    </div>
     <button
       *ngIf="!isFavoritesPage"
       type="button"

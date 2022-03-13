@@ -1,7 +1,17 @@
-<div class="d-flex align-items-center px-3 calendar-page">
-  <div class="row d-flex justify-content-center w-100 h-100">
-    <div *ngFor="let day of weekDays; index as i" class="col-12 col-md h-100">
-      <app-day-cell [class.today-cell]="isToday(i)" [day]="day"></app-day-cell>
+<div
+  class="d-flex align-items-center px-3 calendar-page container-fluid justify-content-center"
+>
+  <div class="row d-flex justify-content-center w-100">
+    <div
+      *ngFor="let day of weekDays; index as i"
+      class="col-12 col-md my-3 my-md-0"
+    >
+      <app-day-cell
+        class="h-100"
+        [class.today-cell]="isToday(i)"
+        [day]="day"
+        [recipes]="todayRecipes(day.date)"
+      ></app-day-cell>
     </div>
   </div>
 </div>
