@@ -20,7 +20,6 @@ export class ShoppingListComponent {
   shoppingList: Ingredient[] = [];
 
   selectedOptions: string[];
-  allSelected = false;
 
   constructor(
     private ingredientService: IngredientService,
@@ -50,7 +49,9 @@ export class ShoppingListComponent {
     this.shopListService
       .deleteShoppingListItem(this.user.id, item.id)
       .subscribe(() => {
-        this.loadShoppingList();
+        setTimeout(() => {
+          this.loadShoppingList();
+        }, 100);
       });
   }
 

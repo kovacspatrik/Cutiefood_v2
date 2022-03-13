@@ -4,3 +4,9 @@
   min-height: $app-content-height;
   background-color: $cutiefood-background;
 }
+
+.today-cell {
+  ::ng-deep .day-cell {
+    border: 3px solid $cutiefood-orange;
+  }
+}

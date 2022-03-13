@@ -1,21 +1,21 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { MOCK_RECIPE_LIST } from "../../../Services/mock-files/mock-recipes";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CalendarEvent } from 'src/app/Models/calendar-event.model';
+import { Recipe } from 'src/app/Models/recipe.model';
+import { WeekDays } from 'src/app/Models/weekDays.model';
+import { MOCK_RECIPE_LIST } from '../../../Services/mock-files/mock-recipes';
 
 @Component({
   selector: 'app-day-cell',
   templateUrl: './day-cell.component.html',
-  styleUrls: ['./day-cell.component.scss']
+  styleUrls: ['./day-cell.component.scss'],
 })
-export class DayCellComponent implements OnInit {
+export class DayCellComponent {
+  @Input() day: WeekDays;
+  @Input() recipes: CalendarEvent[] = [];
 
-  @Input() headText: string | undefined
-  @Input() elements: any[] | undefined;
-  recipe = MOCK_RECIPE_LIST[1];
-  pic_url = "https://cdn.portfolio.hu/articles/images-lg/m/e/g/megvadulsz-ha-meglatod-mennyi-fagyasztott-pizza-fogyott-1-ev-alatt-nalunk-295599.jpg"
+  @Output() eventDeleted = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  emitEventDeleted() {
+    this.eventDeleted.emit();
   }
-
 }

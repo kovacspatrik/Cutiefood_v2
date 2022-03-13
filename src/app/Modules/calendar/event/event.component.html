@@ -1,13 +1,19 @@
-<div *ngIf="recipe" class="d-flex justify-content-center">
+<div *ngIf="recipe" class="d-flex justify-content-center mx-1 h-100">
   <div class="event-box my-2 py-2 mx-0">
     <div class="row mb-2">
-      <div class="col-12 d-flex justify-content-center px-0">
-        <h2 class="text-white m-0">{{ recipe.name }}</h2>
+      <div class="col-12 ml-2">
+        <h4 class="recipe-title text-white m-0">
+          {{ recipe.name }}
+        </h4>
       </div>
     </div>
     <div *ngIf="recipe.picture" class="row">
       <div class="col-12 d-flex justify-content-center">
-        <img class="event-image" src="{{ recipe.picture }}" alt="" />
+        <img
+          class="event-image"
+          src="../../../../assets/images/cutiefood_placeholder.png"
+          alt=""
+        />
       </div>
     </div>
   </div>

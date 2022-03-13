@@ -6,4 +6,13 @@ import {
 } from './mock-ingredients';
 import { MOCK_USERS } from './mock-users';
 
-export const MOCK_RECIPE_LIST: Recipe[] = [];
+export const MOCK_RECIPE_LIST: Recipe[] = [
+  {
+    name: 'Próba',
+    picture:
+      'https://cdn.portfolio.hu/articles/images-lg/m/e/g/megvadulsz-ha-meglatod-mennyi-fagyasztott-pizza-fogyott-1-ev-alatt-nalunk-295599.jpg',
+    ingredients: [],
+    process: 'process',
+    diffLevel: 2,
+  },
+];
