@@ -11,6 +11,7 @@
         [class.today-cell]="isToday(i)"
         [day]="day"
         [recipes]="todayRecipes(day.date)"
+        (eventDeleted)="reloadCalendar()"
       ></app-day-cell>
     </div>
   </div>

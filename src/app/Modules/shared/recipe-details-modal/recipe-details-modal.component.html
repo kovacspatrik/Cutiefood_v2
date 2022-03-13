@@ -38,10 +38,17 @@
     class="modal-footer d-flex justify-content-center justify-content-lg-end"
   >
     <app-add-to-calendar-modal
+      (emitSelectedDate)="addToCalendar($event)"
       *ngIf="!isCalendarPage"
     ></app-add-to-calendar-modal>
     <div *ngIf="isCalendarPage">
-      <button type="button" class="btn btn-danger">Törlés a naptárból</button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="deleteFromCalendar()"
+      >
+        Törlés a naptárból
+      </button>
     </div>
     <button
       *ngIf="!isFavoritesPage"

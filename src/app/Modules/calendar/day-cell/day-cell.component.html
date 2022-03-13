@@ -8,8 +8,10 @@
         class="col-12 d-flex justify-content-center"
       >
         <app-recipe-details-modal
-          [recipe]="recipe"
+          [recipe]="recipe.recipe"
+          [calendarId]="recipe.id"
           [isCalendarPage]="true"
+          (eventDeleted)="emitEventDeleted()"
         ></app-recipe-details-modal>
       </div>
     </div>

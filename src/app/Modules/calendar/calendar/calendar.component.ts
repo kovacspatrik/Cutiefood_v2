@@ -54,12 +54,11 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  todayRecipes(date: string): Recipe[] {
-    let toReturn: Recipe[] = [];
+  todayRecipes(date: string): CalendarEvent[] {
+    let toReturn: CalendarEvent[] = [];
     this.userRecipes.forEach((event) => {
       if (event.date === date) {
-        toReturn.push(event.recipe);
-        console.log(event.date);
+        toReturn.push(event);
       }
     });
     return toReturn;
@@ -70,5 +69,9 @@ export class CalendarComponent implements OnInit {
       return this.todayCount + 6 === i;
     }
     return this.todayCount - 1 === i;
+  }
+
+  reloadCalendar() {
+    this.getUserCalendar();
   }
 }
