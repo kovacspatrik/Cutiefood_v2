@@ -3,6 +3,17 @@
 .calendar-page {
   min-height: $app-content-height;
   background-color: $cutiefood-background;
+
+  .navigate-weeks {
+    border: 2px solid #ababab;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    cursor: pointer;
+    margin: 0px 10px;
+  }
 }
 
 .today-cell {

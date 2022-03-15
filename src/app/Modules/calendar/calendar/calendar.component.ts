@@ -38,6 +38,10 @@ export class CalendarComponent implements OnInit {
   todayCount = this.today.getDay();
 
   ngOnInit(): void {
+    this.initWeekDays();
+  }
+
+  initWeekDays() {
     for (let i = 1; i <= 7; i++) {
       let monday = this.today.getDate() - this.today.getDay() + i;
       if (this.today.getDay() === 0) {
@@ -46,6 +50,16 @@ export class CalendarComponent implements OnInit {
       let day = new Date(this.today.setDate(monday)).toISOString().slice(0, 10);
       this.weekDays[i - 1].date = day;
     }
+  }
+
+  getNextWeek() {
+    this.today = new Date(this.today.setDate(this.today.getDate() + 7));
+    this.initWeekDays();
+  }
+
+  getPreviousWeek() {
+    this.today = new Date(this.today.setDate(this.today.getDate() - 7));
+    this.initWeekDays();
   }
 
   getUserCalendar() {
