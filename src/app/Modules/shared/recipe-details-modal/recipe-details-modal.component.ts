@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { RecipeListService } from '../../../Services/recipe-list.service';
 import { addToCalendarModel } from 'src/app/Models/calendar-event.model';
 import { CalendarService } from 'src/app/Services/calendar.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-recipe-details-modal',
@@ -66,7 +67,10 @@ export class RecipeDetailsModalComponent {
       recipe: this.recipe,
       date: date,
     };
-    this.calendarService.addNewCalendarEvent(newEvent).subscribe();
+    this.calendarService.addNewCalendarEvent(newEvent).subscribe(
+      () => {},
+      (err: HttpErrorResponse) => alert(err.error.message)
+    );
   }
 
   deleteFromCalendar() {
