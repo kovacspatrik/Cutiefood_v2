@@ -29,8 +29,11 @@ export class AddToCalendarModalComponent implements OnInit {
   }
 
   addToCalendar() {
-    this.emitSelectedDate.emit(this.selected.toISOString().split('T')[0]);
-    console.log(this.selected.toISOString().split('T')[0]);
+    const selectedDate = `${this.selected.getFullYear()}-${
+      this.selected.getMonth() + 1
+    }-${this.selected.getDate()}`;
+    this.emitSelectedDate.emit(selectedDate);
+    console.log(selectedDate);
     this.modalService.dismissAll();
   }
 
