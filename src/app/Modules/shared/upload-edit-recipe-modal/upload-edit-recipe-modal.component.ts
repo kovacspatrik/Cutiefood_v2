@@ -51,6 +51,16 @@ export class UploadEditRecipeModalComponent {
     }
   }
 
+  hasIngredient(item: Ingredient): boolean {
+    let hasIngredient = false;
+    this.recipe.ingredients.forEach((ingredient) => {
+      if (ingredient.ingredient.name === item.name) {
+        hasIngredient = true;
+      }
+    });
+    return hasIngredient;
+  }
+
   onSave() {
     this.recipe.user = this.auth.getUser();
     if (this.isEdit) {
@@ -62,12 +72,15 @@ export class UploadEditRecipeModalComponent {
   }
 
   addIngredient(item: Ingredient) {
-    console.log(item);
-    const data: IngredientWithQuantity = {
-      quantity: '',
-      ingredient: item,
-    };
-    this.recipe.ingredients.push(data);
+    if (!this.hasIngredient(item)) {
+      const data: IngredientWithQuantity = {
+        quantity: '',
+        ingredient: item,
+      };
+      this.recipe.ingredients.push(data);
+    } else {
+      alert(`A(z) ${item.name} már szerepel a listában!`);
+    }
   }
 
   removeIngredient(event: IngredientWithQuantity) {
