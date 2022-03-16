@@ -1,4 +1,10 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Recipe } from 'src/app/Models/recipe.model';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeListService } from '../../../Services/recipe-list.service';
@@ -21,6 +27,8 @@ export class UploadEditRecipeModalComponent {
   @ViewChild('select') selectDropdown: MatSelect;
   @Input() isEdit: boolean = false;
   @Input() recipe?: Recipe;
+
+  @Output() recipeUpdated = new EventEmitter<any>();
 
   allIngredientsList: Ingredient[] = [];
   proba = false;
@@ -68,6 +76,7 @@ export class UploadEditRecipeModalComponent {
     } else {
       this.recipeListService.uploadRecipe(this.recipe).subscribe();
     }
+    this.recipeUpdated.emit();
     this.modalService.dismissAll();
   }
 
