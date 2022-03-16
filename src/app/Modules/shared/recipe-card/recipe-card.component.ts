@@ -1,7 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from 'src/app/Models/recipe.model';
-import { RecipeListService } from 'src/app/Services/recipe-list.service';
 
 @Component({
   selector: 'app-recipe-card',
@@ -13,20 +11,29 @@ export class RecipeCardComponent implements OnInit {
   @Input() isFavoritesPage: boolean;
   @Input() myRecipes: boolean;
 
+  @Output() recipeDeleted = new EventEmitter<any>();
+
   selectedRecipe: Recipe;
   numberOfIngredients: number;
 
   placeholderImage = '../../../../assets/images/cutiefood_placeholder.png';
 
-  constructor(private recipeListService: RecipeListService) {}
+  constructor() {}
 
   ngOnInit() {
-    //this.recipe = this.recipeListService.getRecipeById(this.id);
+    this.initCard();
+  }
+
+  initCard() {
     this.numberOfIngredients = this.recipe.ingredients.length;
   }
 
   counter(i: number) {
     return new Array(i);
+  }
+
+  emitRecipeDelete() {
+    this.recipeDeleted.emit();
   }
 
   get recipeImageOrPlaceholder(): string {

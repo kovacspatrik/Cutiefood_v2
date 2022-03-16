@@ -4,6 +4,7 @@
     class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 d-flex justify-content-center"
   >
     <app-recipe-card
+      (recipeDeleted)="recipeDeleted()"
       [recipe]="recipe"
       [isFavoritesPage]="isFavoritesPage"
       [myRecipes]="myRecipes"

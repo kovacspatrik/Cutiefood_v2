@@ -1,4 +1,10 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Recipe } from 'src/app/Models/recipe.model';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeListService } from '../../../Services/recipe-list.service';
@@ -21,6 +27,8 @@ export class UploadEditRecipeModalComponent {
   @ViewChild('select') selectDropdown: MatSelect;
   @Input() isEdit: boolean = false;
   @Input() recipe?: Recipe;
+
+  @Output() recipeUpdated = new EventEmitter<any>();
 
   allIngredientsList: Ingredient[] = [];
   proba = false;
@@ -51,25 +59,37 @@ export class UploadEditRecipeModalComponent {
     }
   }
 
+  hasIngredient(item: Ingredient): boolean {
+    let hasIngredient = false;
+    this.recipe.ingredients.forEach((ingredient) => {
+      if (ingredient.ingredient.name === item.name) {
+        hasIngredient = true;
+      }
+    });
+    return hasIngredient;
+  }
+
   onSave() {
     this.recipe.user = this.auth.getUser();
-
-    console.log(this.recipe);
     if (this.isEdit) {
-      //  RECEPT UPDATE
+      this.recipeListService.editRecipe(this.recipe).subscribe();
     } else {
       this.recipeListService.uploadRecipe(this.recipe).subscribe();
     }
+    this.recipeUpdated.emit();
     this.modalService.dismissAll();
   }
 
   addIngredient(item: Ingredient) {
-    console.log(item);
-    const data: IngredientWithQuantity = {
-      quantity: '',
-      ingredient: item,
-    };
-    this.recipe.ingredients.push(data);
+    if (!this.hasIngredient(item)) {
+      const data: IngredientWithQuantity = {
+        quantity: '',
+        ingredient: item,
+      };
+      this.recipe.ingredients.push(data);
+    } else {
+      alert(`A(z) ${item.name} már szerepel a listában!`);
+    }
   }
 
   removeIngredient(event: IngredientWithQuantity) {

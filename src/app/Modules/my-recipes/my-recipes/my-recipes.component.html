@@ -12,6 +12,7 @@
     </div>
   </div>
   <app-recipe-card-list
+    (emitDeleteRecipe)="refreshPage()"
     [recipeList]="recipeList"
     [myRecipes]="true"
   ></app-recipe-card-list>
