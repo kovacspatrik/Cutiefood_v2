@@ -59,28 +59,18 @@ export class RecipeListService {
     return this.http.delete(`${environment.apiUrl}/recipe/${id}/delete`);
   }
 
-  //MOCK
-
-  getRecipeById(id: number): Recipe {
-    return this.recipeList.find((element) => element.id === id);
-  }
-
-  getIngredienNametById(id: number): string {
-    const ingredient = this.ingredientsList.find(
-      (element) => element.id === id
+  editRecipe(recipe: Recipe) {
+    const data: Recipe = {
+      name: recipe.name,
+      diffLevel: recipe.diffLevel,
+      picture: recipe.picture,
+      ingredients: recipe.ingredients,
+      user: recipe.user,
+      process: recipe.process,
+    };
+    return this.http.put(
+      `${environment.apiUrl}/recipe/${recipe.id}/update`,
+      data
     );
-    return ingredient.name;
-  }
-
-  getIngredientById(id: number): Ingredient {
-    return this.ingredientsList.find((element) => element.id === id);
-  }
-
-  getIngredientListById(idList: number[]): Ingredient[] {
-    const ingredients: Ingredient[] = [];
-    for (let i = 0; i < idList.length; i++) {
-      ingredients.push(this.getIngredientById(idList[i]));
-    }
-    return ingredients;
   }
 }

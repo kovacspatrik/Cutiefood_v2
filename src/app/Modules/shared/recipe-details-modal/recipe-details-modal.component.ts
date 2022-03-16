@@ -37,10 +37,6 @@ export class RecipeDetailsModalComponent {
     this.user = this.authService.getUser();
   }
 
-  getIngredientNameById(id: number) {
-    return this.recipeListService.getIngredienNametById(id);
-  }
-
   open(content: any) {
     this.modalService.open(content, { size: 'lg', backdrop: true });
   }

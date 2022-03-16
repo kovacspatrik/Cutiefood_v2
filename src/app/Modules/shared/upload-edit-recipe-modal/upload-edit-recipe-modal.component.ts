@@ -53,10 +53,9 @@ export class UploadEditRecipeModalComponent {
 
   onSave() {
     this.recipe.user = this.auth.getUser();
-
-    console.log(this.recipe);
     if (this.isEdit) {
-      //  RECEPT UPDATE
+      this.recipeListService.editRecipe(this.recipe).subscribe();
+      console.log(this.recipe);
     } else {
       this.recipeListService.uploadRecipe(this.recipe).subscribe();
     }
