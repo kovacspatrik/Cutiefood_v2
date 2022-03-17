@@ -1,4 +1,12 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeListService } from '../../../Services/recipe-list.service';
 
@@ -10,6 +18,8 @@ import { RecipeListService } from '../../../Services/recipe-list.service';
 export class AreYouSureDeleteModalComponent implements OnInit {
   @Input() recipeId: number;
   @ViewChild('content') modal: ElementRef;
+  @Output() recipeDeleted = new EventEmitter<any>();
+
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -26,7 +36,9 @@ export class AreYouSureDeleteModalComponent implements OnInit {
   ngOnInit(): void {}
 
   deleteRecipe() {
-    this.recipeListService.deleteRecipe(this.recipeId).subscribe();
+    this.recipeListService.deleteRecipe(this.recipeId).subscribe(() => {
+      this.recipeDeleted.emit();
+    });
     this.modalService.dismissAll();
   }
 }

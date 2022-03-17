@@ -21,9 +21,11 @@
     <div class="row d-flex justify-content-end">
       <div *ngIf="myRecipes" class="d-flex mx-1">
         <app-are-you-sure-delete-modal
+          (recipeDeleted)="emitRecipeDelete()"
           [recipeId]="recipe.id"
         ></app-are-you-sure-delete-modal>
         <app-upload-edit-recipe-modal
+          (recipeUpdated)="initCard()"
           [isEdit]="true"
           [recipe]="recipe"
         ></app-upload-edit-recipe-modal>

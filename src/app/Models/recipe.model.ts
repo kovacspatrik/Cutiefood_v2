@@ -7,6 +7,6 @@ export class Recipe {
   user?: User;
   ingredients: IngredientWithQuantity[];
   process: string;
-  diffLevel: number;
+  diffLevel: number = 1;
   picture?: string;
 }

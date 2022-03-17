@@ -1,18 +1,18 @@
-<div class="day-cell my-3 my-md-0">
-  <h1 class="text-center">{{ headText }}</h1>
-  <div *ngIf="!elements" class="d-flex justify-content-center">
+<div class="day-cell h-100">
+  <h1 class="text-center my-1">{{ day.name }}</h1>
+  <h3 class="text-center font-weight-bold">{{ day.date }}</h3>
+  <div class="d-flex justify-content-center">
     <div class="row">
-      <div class="col-12 d-flex justify-content-center">
-        <!-- <app-recipe-details-modal
-          [recipe]="recipe"
+      <div
+        *ngFor="let recipe of recipes"
+        class="col-12 d-flex justify-content-center"
+      >
+        <app-recipe-details-modal
+          [recipe]="recipe.recipe"
+          [calendarId]="recipe.id"
           [isCalendarPage]="true"
-        ></app-recipe-details-modal> -->
-      </div>
-      <div class="col-12 d-flex justify-content-center">
-        <!-- <app-event [recipe]="recipe"></app-event> -->
-      </div>
-      <div class="col-12 d-flex justify-content-center">
-        <!-- <app-event [recipe]="recipe"></app-event> -->
+          (eventDeleted)="emitEventDeleted()"
+        ></app-recipe-details-modal>
       </div>
     </div>
   </div>

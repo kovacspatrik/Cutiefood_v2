@@ -29,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RegistrationModalComponent } from './registration-modal/registration-modal.component';
 import { MatOptionModule } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { BrowserModule } from '@angular/platform-browser';
     MatSelectModule,
     MatOptionModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   declarations: [
     RecipeCardComponent,
@@ -90,6 +92,7 @@ import { BrowserModule } from '@angular/platform-browser';
     MatCardModule,
     MatOptionModule,
     MatInputModule,
+    MatTooltipModule,
   ],
 })
 export class SharedModule {}

@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/user.model';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Recipe } from '../../../Models/recipe.model';
@@ -9,7 +9,7 @@ import { RecipeListService } from '../../../Services/recipe-list.service';
   templateUrl: './my-recipes.component.html',
   styleUrls: ['./my-recipes.component.scss'],
 })
-export class MyRecipesComponent implements OnInit, OnChanges {
+export class MyRecipesComponent implements OnInit {
   user: User;
   recipeList: Recipe[];
 
@@ -20,13 +20,17 @@ export class MyRecipesComponent implements OnInit, OnChanges {
     this.user = this.authService.getUser();
   }
 
-  ngOnChanges() {
-    console.log('CHANGE');
+  refreshPage() {
+    this.initRecipeList();
   }
 
-  ngOnInit(): void {
+  initRecipeList() {
     this.recipeListService.getRecipesByUserId(this.user.id).subscribe((res) => {
       this.recipeList = res;
     });
+  }
+
+  ngOnInit(): void {
+    this.initRecipeList();
   }
 }

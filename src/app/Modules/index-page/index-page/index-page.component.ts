@@ -26,12 +26,9 @@ export class IndexPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.recipeListService.getRecipes().subscribe((res) => {
+      this.recipeList = res;
       this.recipeListToShow = res;
     });
-  }
-
-  OpenNewRecipeModal() {
-    alert('ÚJ RECEPT MODAL');
   }
 
   filterRecipes() {
