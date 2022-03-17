@@ -16,6 +16,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { IngredientService } from 'src/app/Services/ingredient.service';
 import { MatSelect } from '@angular/material/select';
 import { MatList } from '@angular/material/list';
+import { ImageModel } from 'src/app/Models/image.model';
+import { placeholderImage } from 'src/app/Constants/placeholderImage';
 
 @Component({
   selector: 'app-upload-edit-recipe-modal',
@@ -31,7 +33,10 @@ export class UploadEditRecipeModalComponent {
   @Output() recipeUpdated = new EventEmitter<any>();
 
   allIngredientsList: Ingredient[] = [];
-  image: File = null;
+  image: ImageModel = {
+    name: '',
+    data: '',
+  };
 
   constructor(
     config: NgbModalConfig,
@@ -74,7 +79,20 @@ export class UploadEditRecipeModalComponent {
     if (this.isEdit) {
       this.recipeListService.editRecipe(this.recipe).subscribe();
     } else {
-      this.recipeListService.uploadRecipe(this.recipe).subscribe();
+      this.recipeListService
+        .uploadRecipe(this.recipe)
+        .subscribe((res: Recipe) => {
+          this.image.name = `${res.id.toString()}.png`;
+          if (this.image.data === '') {
+            this.image.data = placeholderImage;
+          }
+          this.recipeListService.uploadRecipeImage(this.image).subscribe(() => {
+            this.image = {
+              name: '',
+              data: '',
+            };
+          });
+        });
     }
     this.recipeUpdated.emit();
     this.modalService.dismissAll();
@@ -101,8 +119,16 @@ export class UploadEditRecipeModalComponent {
   }
 
   fileChange(event: any) {
-    this.image = event.target.files[0];
+    const uploadedData = event.target.files[0];
 
-    console.log(this.image);
+    if (uploadedData) {
+      const reader = new FileReader();
+      reader.readAsDataURL(uploadedData);
+      reader.onload = () => {
+        console.log(reader.result);
+        this.image.data = reader.result as string;
+        // this.recipeListService.uploadRecipeImage(image).subscribe();
+      };
+    }
   }
 }
