@@ -123,9 +123,9 @@ export class UploadEditRecipeModalComponent {
     const uploadedData = event.target.files[0];
 
     if (uploadedData) {
-      const fileName = `/storage/${uploadedData.name}`;
-      this.recipe.picture = fileName;
-      this.image.name = uploadedData.name;
+      const random = Math.floor(999 + Math.random() * 9000);
+      this.recipe.picture = `/storage/${uploadedData.name}_${random}`;
+      this.image.name = `${uploadedData.name}_${random}`;
       const reader = new FileReader();
       reader.readAsDataURL(uploadedData);
       reader.onload = () => {
