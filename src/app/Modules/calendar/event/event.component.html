@@ -9,11 +9,7 @@
     </div>
     <div *ngIf="recipe.picture" class="row">
       <div class="col-12 d-flex justify-content-center">
-        <img
-          class="event-image"
-          src="../../../../assets/images/cutiefood_placeholder.png"
-          alt=""
-        />
+        <img class="event-image" src="{{ recipeImageOrPlaceholder }}" alt="" />
       </div>
     </div>
   </div>

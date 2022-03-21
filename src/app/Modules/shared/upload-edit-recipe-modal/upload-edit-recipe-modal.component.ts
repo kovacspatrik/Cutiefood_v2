@@ -16,6 +16,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { IngredientService } from 'src/app/Services/ingredient.service';
 import { MatSelect } from '@angular/material/select';
 import { MatList } from '@angular/material/list';
+import { ImageModel } from 'src/app/Models/image.model';
+import { placeholderImage } from 'src/app/Constants/placeholderImage';
 
 @Component({
   selector: 'app-upload-edit-recipe-modal',
@@ -31,7 +33,10 @@ export class UploadEditRecipeModalComponent {
   @Output() recipeUpdated = new EventEmitter<any>();
 
   allIngredientsList: Ingredient[] = [];
-  proba = false;
+  image: ImageModel = {
+    name: '',
+    data: '',
+  };
 
   constructor(
     config: NgbModalConfig,
@@ -73,8 +78,10 @@ export class UploadEditRecipeModalComponent {
     this.recipe.user = this.auth.getUser();
     if (this.isEdit) {
       this.recipeListService.editRecipe(this.recipe).subscribe();
+      this.uploadImage();
     } else {
       this.recipeListService.uploadRecipe(this.recipe).subscribe();
+      this.uploadImage();
     }
     this.recipeUpdated.emit();
     this.modalService.dismissAll();
@@ -97,6 +104,34 @@ export class UploadEditRecipeModalComponent {
       if (this.recipe.ingredients[i] === event) {
         this.recipe.ingredients.splice(i, 1);
       }
+    }
+  }
+
+  uploadImage() {
+    if (this.image.data === '') {
+      this.image.data = placeholderImage;
+    }
+    this.recipeListService.uploadRecipeImage(this.image).subscribe(() => {
+      this.image = {
+        name: '',
+        data: '',
+      };
+    });
+  }
+
+  fileChange(event: any) {
+    const uploadedData = event.target.files[0];
+
+    if (uploadedData) {
+      const random = Math.floor(999 + Math.random() * 9000);
+      this.recipe.picture = `/storage/${uploadedData.name}_${random}`;
+      this.image.name = `${uploadedData.name}_${random}`;
+      const reader = new FileReader();
+      reader.readAsDataURL(uploadedData);
+      reader.onload = () => {
+        this.image.data = reader.result as string;
+        console.log(event.target.files[0].name);
+      };
     }
   }
 }

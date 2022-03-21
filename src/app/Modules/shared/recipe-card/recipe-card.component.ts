@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from 'src/app/Models/recipe.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-recipe-card',
@@ -37,6 +38,9 @@ export class RecipeCardComponent implements OnInit {
   }
 
   get recipeImageOrPlaceholder(): string {
-    return this.placeholderImage;
+    if (this.recipe.picture === 'default recipe picture') {
+      return '../../../../assets/images/cutiefood_placeholder.png';
+    }
+    return `${environment.apiUrl}${this.recipe.picture}`;
   }
 }

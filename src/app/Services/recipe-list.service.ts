@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../Models/user.model';
+import { ImageModel } from '../Models/image.model';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,7 @@ export class RecipeListService {
     );
   }
 
-  uploadRecipe(recipe: Recipe) {
+  uploadRecipe(recipe: Recipe): Observable<any> {
     return this.http.post(`${environment.apiUrl}/recipe/create`, recipe);
   }
 
@@ -72,5 +73,9 @@ export class RecipeListService {
       `${environment.apiUrl}/recipe/${recipe.id}/update`,
       data
     );
+  }
+
+  uploadRecipeImage(image: ImageModel) {
+    return this.http.post(`${environment.apiUrl}/recipe/upload_image`, image);
   }
 }
