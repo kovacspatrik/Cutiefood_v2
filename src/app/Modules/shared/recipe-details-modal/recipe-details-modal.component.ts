@@ -7,6 +7,7 @@ import { RecipeListService } from '../../../Services/recipe-list.service';
 import { addToCalendarModel } from 'src/app/Models/calendar-event.model';
 import { CalendarService } from 'src/app/Services/calendar.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-recipe-details-modal',
@@ -53,8 +54,11 @@ export class RecipeDetailsModalComponent {
     this.modalService.dismissAll();
   }
 
-  recipeImageOrPlaceholder(): string {
-    return this.placeholderImage;
+  get recipeImageOrPlaceholder(): string {
+    if (this.recipe.picture === 'default recipe picture') {
+      return '../../../../assets/images/cutiefood_placeholder.png';
+    }
+    return `${environment.apiUrl}${this.recipe.picture}`;
   }
 
   addToCalendar(date: string) {

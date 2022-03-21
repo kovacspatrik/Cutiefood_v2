@@ -78,21 +78,10 @@ export class UploadEditRecipeModalComponent {
     this.recipe.user = this.auth.getUser();
     if (this.isEdit) {
       this.recipeListService.editRecipe(this.recipe).subscribe();
+      this.uploadImage();
     } else {
-      this.recipeListService
-        .uploadRecipe(this.recipe)
-        .subscribe((res: Recipe) => {
-          this.image.name = `${res.id.toString()}.png`;
-          if (this.image.data === '') {
-            this.image.data = placeholderImage;
-          }
-          this.recipeListService.uploadRecipeImage(this.image).subscribe(() => {
-            this.image = {
-              name: '',
-              data: '',
-            };
-          });
-        });
+      this.recipeListService.uploadRecipe(this.recipe).subscribe();
+      this.uploadImage();
     }
     this.recipeUpdated.emit();
     this.modalService.dismissAll();
@@ -118,16 +107,30 @@ export class UploadEditRecipeModalComponent {
     }
   }
 
+  uploadImage() {
+    if (this.image.data === '') {
+      this.image.data = placeholderImage;
+    }
+    this.recipeListService.uploadRecipeImage(this.image).subscribe(() => {
+      this.image = {
+        name: '',
+        data: '',
+      };
+    });
+  }
+
   fileChange(event: any) {
     const uploadedData = event.target.files[0];
 
     if (uploadedData) {
+      const fileName = `/storage/${uploadedData.name}`;
+      this.recipe.picture = fileName;
+      this.image.name = uploadedData.name;
       const reader = new FileReader();
       reader.readAsDataURL(uploadedData);
       reader.onload = () => {
-        console.log(reader.result);
         this.image.data = reader.result as string;
-        // this.recipeListService.uploadRecipeImage(image).subscribe();
+        console.log(event.target.files[0].name);
       };
     }
   }
