@@ -78,7 +78,6 @@ export class UploadEditRecipeModalComponent {
     this.recipe.user = this.auth.getUser();
     if (this.isEdit) {
       this.recipeListService.editRecipe(this.recipe).subscribe();
-      this.uploadImage();
     } else {
       this.recipeListService.uploadRecipe(this.recipe).subscribe();
       this.uploadImage();
@@ -124,8 +123,8 @@ export class UploadEditRecipeModalComponent {
 
     if (uploadedData) {
       const random = Math.floor(999 + Math.random() * 9000);
-      this.recipe.picture = `/storage/${uploadedData.name}_${random}`;
-      this.image.name = `${uploadedData.name}_${random}`;
+      this.recipe.picture = `/storage/${random}_${uploadedData.name}`;
+      this.image.name = `${random}_${uploadedData.name}`;
       const reader = new FileReader();
       reader.readAsDataURL(uploadedData);
       reader.onload = () => {

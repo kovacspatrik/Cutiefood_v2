@@ -95,7 +95,10 @@
         ></textarea>
       </mat-form-field>
     </div>
-    <div class="recipe-image d-flex justify-content-between px-md-5">
+    <div
+      *ngIf="!isEdit"
+      class="recipe-image d-flex justify-content-between px-md-5"
+    >
       <mat-label class="mr-2 mr-md-3">Fénykép feltöltése: </mat-label>
       <input (change)="fileChange($event)" type="file" />
     </div>
