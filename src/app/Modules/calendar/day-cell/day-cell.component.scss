@@ -4,4 +4,8 @@ $page-height: calc(100% - 61px - 50px);
   border: 2px solid #ababab;
   border-radius: 20px;
   min-height: 550px;
+
+  .calendar-event {
+    width: 100%;
+  }
 }
