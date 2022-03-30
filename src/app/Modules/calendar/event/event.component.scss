@@ -16,7 +16,8 @@
   .event-image {
     width: 70%;
     height: 100%;
-    // max-height: 130px;
+    max-height: 130px;
     border-radius: 7px;
+    object-fit: cover;
   }
 }
