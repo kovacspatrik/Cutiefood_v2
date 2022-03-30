@@ -20,6 +20,10 @@ export class AppComponent implements OnInit {
     //console.log(this.noLoggedInUser());
   }
 
+  get userLoggedIn(): boolean {
+    return localStorage.getItem('user') === null;
+  }
+
   ngOnInit() {
     if (this.authService.loggedInUser === null) {
       this.authService.logout();
