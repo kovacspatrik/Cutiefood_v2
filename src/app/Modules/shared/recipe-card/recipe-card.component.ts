@@ -41,6 +41,6 @@ export class RecipeCardComponent implements OnInit {
     if (this.recipe.picture === 'default recipe picture') {
       return '../../../../assets/images/cutiefood_placeholder.png';
     }
-    return `${environment.apiUrl}${this.recipe.picture}`;
+    return `${environment.imageUrl}${this.recipe.picture}`;
   }
 }
