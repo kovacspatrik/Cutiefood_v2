@@ -7,14 +7,31 @@ import { MyRecipesComponent } from './Modules/my-recipes/my-recipes/my-recipes.c
 import { CalendarComponent } from './Modules/calendar/calendar/calendar.component';
 import { ShoppingListComponent } from './Modules/shopping-list/shopping-list/shopping-list.component';
 import { WhatsHomeComponent } from './Modules/whats-home/whats-home/whats-home.component';
+import { AuthGuard } from './Modules/auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: IndexPageComponent },
-  { path: 'calendar', component: CalendarComponent },
-  { path: 'favorites', component: FavouriteRecipesComponent },
-  { path: 'shopping_list', component: ShoppingListComponent },
-  { path: 'whats_home', component: WhatsHomeComponent },
-  { path: 'my_recipes', component: MyRecipesComponent },
+  { path: 'home', component: IndexPageComponent, canActivate: [AuthGuard] },
+  { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard] },
+  {
+    path: 'favorites',
+    component: FavouriteRecipesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'shopping_list',
+    component: ShoppingListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'whats_home',
+    component: WhatsHomeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'my_recipes',
+    component: MyRecipesComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
