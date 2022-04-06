@@ -25,6 +25,10 @@ export class IndexPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initRecipeList();
+  }
+
+  initRecipeList(): void {
     this.recipeListService.getRecipes().subscribe((res) => {
       this.recipeList = res;
       this.recipeListToShow = res;
@@ -39,5 +43,11 @@ export class IndexPageComponent implements OnInit {
     } else {
       this.recipeListToShow = this.recipeList;
     }
+  }
+
+  recipeListChange() {
+    setTimeout(() => {
+      this.initRecipeList();
+    }, 500);
   }
 }

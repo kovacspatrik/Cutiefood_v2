@@ -16,9 +16,7 @@ import { AuthService } from './Services/auth.service';
 export class AppComponent implements OnInit {
   title = 'CutieFood';
   isLoggedIn: boolean;
-  constructor(private authService: AuthService) {
-    //console.log(this.noLoggedInUser());
-  }
+  constructor(private authService: AuthService) {}
 
   get userLoggedIn(): boolean {
     return localStorage.getItem('user') === null;

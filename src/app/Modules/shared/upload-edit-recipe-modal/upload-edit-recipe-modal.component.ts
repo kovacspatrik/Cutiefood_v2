@@ -80,7 +80,9 @@ export class UploadEditRecipeModalComponent {
       this.recipeListService.editRecipe(this.recipe).subscribe();
     } else {
       this.recipeListService.uploadRecipe(this.recipe).subscribe();
-      this.uploadImage();
+      if (this.recipe.picture) {
+        this.uploadImage();
+      }
     }
     this.recipeUpdated.emit();
     this.modalService.dismissAll();

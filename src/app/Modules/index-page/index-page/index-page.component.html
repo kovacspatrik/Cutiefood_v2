@@ -19,7 +19,9 @@
     <div
       class="col-md col-sm-12 d-flex justify-content-center justify-content-md-end my-3 my-md-0 align-items-center"
     >
-      <app-upload-edit-recipe-modal></app-upload-edit-recipe-modal>
+      <app-upload-edit-recipe-modal
+        (recipeUpdated)="recipeListChange()"
+      ></app-upload-edit-recipe-modal>
     </div>
   </div>
   <app-recipe-card-list [recipeList]="recipeListToShow"></app-recipe-card-list>

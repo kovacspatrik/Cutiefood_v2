@@ -33,4 +33,10 @@ export class MyRecipesComponent implements OnInit {
   ngOnInit(): void {
     this.initRecipeList();
   }
+
+  recipeListChange() {
+    setTimeout(() => {
+      this.initRecipeList();
+    }, 500);
+  }
 }
