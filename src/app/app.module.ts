@@ -13,6 +13,11 @@ import { ShoppingListModule } from './Modules/shopping-list/shopping-list.module
 import { WhatsHomeModule } from './Modules/whats-home/whats-home.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -28,6 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     ShoppingListModule,
     WhatsHomeModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,11 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  NavigationEnd,
-  Router,
-} from '@angular/router';
-import { BehaviorSubject, Observable, of } from 'rxjs';
 import { AuthService } from './Services/auth.service';
 
 @Component({

@@ -18,6 +18,8 @@ import { MatSelect } from '@angular/material/select';
 import { MatList } from '@angular/material/list';
 import { ImageModel } from 'src/app/Models/image.model';
 import { placeholderImage } from 'src/app/Constants/placeholderImage';
+import { FileUpload } from 'src/app/Models/file-upload.model';
+import { FileUploadService } from 'src/app/Services/file-upload.service';
 
 @Component({
   selector: 'app-upload-edit-recipe-modal',
@@ -32,6 +34,10 @@ export class UploadEditRecipeModalComponent {
 
   @Output() recipeUpdated = new EventEmitter<any>();
 
+  selectedFiles?: FileList;
+  currentFileUpload?: FileUpload;
+  percentage = 0;
+
   allIngredientsList: Ingredient[] = [];
   image: ImageModel = {
     name: '',
@@ -43,7 +49,8 @@ export class UploadEditRecipeModalComponent {
     private modalService: NgbModal,
     private recipeListService: RecipeListService,
     private ingredientService: IngredientService,
-    private auth: AuthService
+    private auth: AuthService,
+    private uploadService: FileUploadService
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -79,12 +86,13 @@ export class UploadEditRecipeModalComponent {
     if (this.isEdit) {
       this.recipeListService.editRecipe(this.recipe).subscribe();
     } else {
-      this.recipeListService.uploadRecipe(this.recipe).subscribe();
-      if (this.recipe.picture) {
-        this.uploadImage();
-      }
+      this.uploadService
+        .uploadRecipeWithImage(this.currentFileUpload, this.recipe)
+        .subscribe({
+          complete: () => this.recipeUpdated.emit(),
+        });
     }
-    this.recipeUpdated.emit();
+
     this.modalService.dismissAll();
   }
 
@@ -118,21 +126,21 @@ export class UploadEditRecipeModalComponent {
         data: '',
       };
     });
+    console.log(this.image);
   }
 
   fileChange(event: any) {
-    const uploadedData = event.target.files[0];
+    let uploadedData = event.target.files[0];
 
     if (uploadedData) {
+      const file: File | null = uploadedData;
+      uploadedData = undefined;
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+      }
+
       const random = Math.floor(999 + Math.random() * 9000);
       this.recipe.picture = `/storage/${random}_${uploadedData.name}`;
-      this.image.name = `${random}_${uploadedData.name}`;
-      const reader = new FileReader();
-      reader.readAsDataURL(uploadedData);
-      reader.onload = () => {
-        this.image.data = reader.result as string;
-        console.log(event.target.files[0].name);
-      };
     }
   }
 }
