@@ -1,6 +1,7 @@
 <div class="container-fluid favorites-page py-3">
   <h1>Kedvenc receptjeim</h1>
   <app-recipe-card-list
+    (deletedFromFavs)="getMyFavouriteRecipes()"
     [recipeList]="recipeList"
     [isFavoritesPage]="true"
   ></app-recipe-card-list>

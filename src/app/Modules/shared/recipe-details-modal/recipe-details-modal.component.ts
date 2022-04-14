@@ -22,6 +22,8 @@ export class RecipeDetailsModalComponent {
   @Input() calendarId?: number;
 
   @Output() eventDeleted = new EventEmitter();
+  @Output() deletedFromFavs = new EventEmitter();
+
   user: User;
   placeholderImage: '../../../../assets/images/cutiefood_placeholder.png';
 
@@ -50,7 +52,15 @@ export class RecipeDetailsModalComponent {
   deleteFromFavourites() {
     this.recipeListService
       .deleteFromFavs(this.user.id, this.recipe.id)
-      .subscribe();
+      .subscribe(
+        () => {},
+        () => {},
+        () => {
+          setTimeout(() => {
+            this.deletedFromFavs.emit();
+          }, 500);
+        }
+      );
     this.modalService.dismissAll();
   }
 

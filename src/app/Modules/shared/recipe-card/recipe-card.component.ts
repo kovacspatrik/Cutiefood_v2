@@ -13,6 +13,7 @@ export class RecipeCardComponent implements OnInit {
   @Input() myRecipes: boolean;
 
   @Output() recipeDeleted = new EventEmitter<any>();
+  @Output() recipeDeletedFromFavs = new EventEmitter();
 
   selectedRecipe: Recipe;
   numberOfIngredients: number;
@@ -42,5 +43,9 @@ export class RecipeCardComponent implements OnInit {
       return '../../../../assets/images/cutiefood_placeholder.png';
     }
     return `${environment.imageUrl}${this.recipe.picture}`;
+  }
+
+  deletedFromFavs() {
+    this.recipeDeletedFromFavs.emit();
   }
 }

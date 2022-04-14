@@ -31,6 +31,7 @@
         ></app-upload-edit-recipe-modal>
       </div>
       <app-recipe-details-modal
+        (deletedFromFavs)="deletedFromFavs()"
         [isFavoritesPage]="isFavoritesPage"
         [recipe]="recipe"
       >

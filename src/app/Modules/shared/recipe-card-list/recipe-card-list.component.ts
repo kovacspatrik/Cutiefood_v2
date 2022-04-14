@@ -11,8 +11,13 @@ export class RecipeCardListComponent {
   @Input() isFavoritesPage = false;
   @Input() myRecipes = false;
   @Output() emitDeleteRecipe = new EventEmitter<any>();
+  @Output() deletedFromFavs = new EventEmitter();
 
   recipeDeleted() {
     this.emitDeleteRecipe.emit();
+  }
+
+  recipeDeletedFromFavs() {
+    this.deletedFromFavs.emit();
   }
 }
