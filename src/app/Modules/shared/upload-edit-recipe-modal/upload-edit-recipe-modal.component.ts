@@ -86,11 +86,18 @@ export class UploadEditRecipeModalComponent {
     if (this.isEdit) {
       this.recipeListService.editRecipe(this.recipe).subscribe();
     } else {
-      this.uploadService
-        .uploadRecipeWithImage(this.currentFileUpload, this.recipe)
-        .subscribe({
+      console.log(this.currentFileUpload);
+      if (this.currentFileUpload === undefined) {
+        this.recipeListService.uploadRecipe(this.recipe).subscribe({
           complete: () => this.recipeUpdated.emit(),
         });
+      } else {
+        this.uploadService
+          .uploadRecipeWithImage(this.currentFileUpload, this.recipe)
+          .subscribe({
+            complete: () => this.recipeUpdated.emit(),
+          });
+      }
     }
 
     this.modalService.dismissAll();
