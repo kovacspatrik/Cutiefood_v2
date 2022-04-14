@@ -138,9 +138,6 @@ export class UploadEditRecipeModalComponent {
       if (file) {
         this.currentFileUpload = new FileUpload(file);
       }
-
-      const random = Math.floor(999 + Math.random() * 9000);
-      this.recipe.picture = `/storage/${random}_${uploadedData.name}`;
     }
   }
 }
